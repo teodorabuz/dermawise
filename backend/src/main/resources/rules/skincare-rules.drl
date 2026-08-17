@@ -1,0 +1,36 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+
+rule "Tip koze - suva"
+when
+    $zahtev : SkincareRequest(osecajNakonPranja == "Zategnuto")
+    $rezultat : SkincareResult()
+then
+    $rezultat.setTipKoze("Suva");
+end
+
+rule "Tip koze - kombinovana"
+when
+    $zahtev : SkincareRequest(osecajNakonPranja == "Sjajno_T_zona")
+    $rezultat : SkincareResult()
+then
+    $rezultat.setTipKoze("Kombinovana");
+end
+
+rule "Tip koze - masna"
+when
+    $zahtev : SkincareRequest(osecajNakonPranja == "Sjajno_Celo")
+    $rezultat : SkincareResult()
+then
+    $rezultat.setTipKoze("Masna");
+end
+
+rule "Tip koze - normalna"
+when
+    $zahtev : SkincareRequest(osecajNakonPranja == "Normalno")
+    $rezultat : SkincareResult()
+then
+    $rezultat.setTipKoze("Normalna");
+end
