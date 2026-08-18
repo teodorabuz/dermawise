@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
 function App() {
+  const [korak, setKorak] = useState(1);
+
   const [formData, setFormData] = useState({
     godine: "",
+    pol: "",
     osecajNakonPranja: "",
     glavniProblemi: [],
     osetljivostKoze: "",
@@ -12,11 +15,618 @@ function App() {
     koristioAktivneSupstance: "",
     korisceniSastojci: [],
   });
+  const [rezultat, setRezultat] = useState(null);
+  const [ucitavanje, setUcitavanje] = useState(false);
+  const [greska, setGreska] = useState(null);
+
+  const azurirajPolje = (naziv, vrednost) => {
+    setFormData({ ...formData, [naziv]: vrednost });
+  };
+
+  const promeniProblem = (vrednost, jeCekirano) => {
+    if (jeCekirano) {
+      setFormData({
+        ...formData,
+        glavniProblemi: [...formData.glavniProblemi, vrednost],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        glavniProblemi: formData.glavniProblemi.filter((p) => p !== vrednost),
+      });
+    }
+  };
+
+  const promeniSastojak = (vrednost, jeCekirano) => {
+    if (jeCekirano) {
+      setFormData({
+        ...formData,
+        korisceniSastojci: [...formData.korisceniSastojci, vrednost],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        korisceniSastojci: formData.korisceniSastojci.filter(
+          (s) => s !== vrednost,
+        ),
+      });
+    }
+  };
+
+  const sledeciKorak = () => {
+    setKorak(korak + 1);
+  };
+
+  const prethodniKorak = () => {
+    setKorak(korak - 1);
+  };
+
+  const posleIzboraPola = () => {
+    if (formData.pol === "Muski") {
+      setFormData({ ...formData, trudnicaIliDojilja: "Ne" });
+      setKorak(4);
+    } else {
+      setKorak(3);
+    }
+  };
+
+  const posleAktivneSupstance = () => {
+    if (
+      formData.koristioAktivneSupstance === "Ne" ||
+      formData.koristioAktivneSupstance === "Ne_znam"
+    ) {
+      setKorak(10);
+    } else {
+      setKorak(9);
+    }
+  };
+
+  const posaljiPodatke = async () => {
+    setUcitavanje(true);
+    setGreska(null);
+    setKorak(11);
+
+    try {
+      const odgovor = await fetch(
+        "http://localhost:8080/api/skincare/analyze",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
+
+      if (!odgovor.ok) {
+        throw new Error("Greška na serveru: " + odgovor.status);
+      }
+
+      const podaci = await odgovor.json();
+      setRezultat(podaci);
+    } catch (e) {
+      setGreska(
+        "Došlo je do greške prilikom komunikacije sa serverom. Proveri da li je backend pokrenut.",
+      );
+      console.error(e);
+    } finally {
+      setUcitavanje(false);
+    }
+  };
 
   return (
-    <div>
+    <div
+      style={{ maxWidth: "500px", margin: "50px auto", fontFamily: "Arial" }}
+    >
       <h1>DermaWise</h1>
-      <p>Forma dolazi u sledećem koraku.</p>
+
+      {korak === 1 && (
+        <div>
+          <h2>1. Koliko imate godina?</h2>
+          <input
+            type="number"
+            value={formData.godine}
+            onChange={(e) => azurirajPolje("godine", e.target.value)}
+            placeholder="Unesite broj godina"
+          />
+          <br />
+          <br />
+          <button onClick={sledeciKorak} disabled={!formData.godine}>
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 2 && (
+        <div>
+          <h2>2. Pol:</h2>
+          <label>
+            <input
+              type="radio"
+              name="pol"
+              value="Zenski"
+              checked={formData.pol === "Zenski"}
+              onChange={(e) => azurirajPolje("pol", e.target.value)}
+            />
+            Ženski
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="pol"
+              value="Muski"
+              checked={formData.pol === "Muski"}
+              onChange={(e) => azurirajPolje("pol", e.target.value)}
+            />
+            Muški
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="pol"
+              value="Nedefinisano"
+              checked={formData.pol === "Nedefinisano"}
+              onChange={(e) => azurirajPolje("pol", e.target.value)}
+            />
+            Ne želim da iskažem
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button onClick={posleIzboraPola} disabled={!formData.pol}>
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 4 && (
+        <div>
+          <h2>
+            3. Kakav vam je osećaj na licu sat vremena nakon pranja samo vodom?
+          </h2>
+          <label>
+            <input
+              type="radio"
+              name="osecajNakonPranja"
+              value="Zategnuto"
+              checked={formData.osecajNakonPranja === "Zategnuto"}
+              onChange={(e) =>
+                azurirajPolje("osecajNakonPranja", e.target.value)
+              }
+            />
+            Zategnuto
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="osecajNakonPranja"
+              value="Sjajno_T_zona"
+              checked={formData.osecajNakonPranja === "Sjajno_T_zona"}
+              onChange={(e) =>
+                azurirajPolje("osecajNakonPranja", e.target.value)
+              }
+            />
+            Sjajno u T-zoni (čelo, nos, brada)
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="osecajNakonPranja"
+              value="Sjajno_Celo"
+              checked={formData.osecajNakonPranja === "Sjajno_Celo"}
+              onChange={(e) =>
+                azurirajPolje("osecajNakonPranja", e.target.value)
+              }
+            />
+            Sjajno na celom licu
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="osecajNakonPranja"
+              value="Normalno"
+              checked={formData.osecajNakonPranja === "Normalno"}
+              onChange={(e) =>
+                azurirajPolje("osecajNakonPranja", e.target.value)
+              }
+            />
+            Normalno
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button onClick={sledeciKorak} disabled={!formData.osecajNakonPranja}>
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 5 && (
+        <div>
+          <h2>
+            4. Koji su vaši glavni problemi sa kožom? (označite sve što važi)
+          </h2>
+          <label>
+            <input
+              type="checkbox"
+              value="Akne"
+              checked={formData.glavniProblemi.includes("Akne")}
+              onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
+            />
+            Akne
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              value="Bore"
+              checked={formData.glavniProblemi.includes("Bore")}
+              onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
+            />
+            Bore
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              value="Fleke"
+              checked={formData.glavniProblemi.includes("Fleke")}
+              onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
+            />
+            Fleke
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              value="Dehidratacija"
+              checked={formData.glavniProblemi.includes("Dehidratacija")}
+              onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
+            />
+            Dehidratacija
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              value="Pore"
+              checked={formData.glavniProblemi.includes("Pore")}
+              onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
+            />
+            Proširene pore
+          </label>
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              value="Nijedan"
+              checked={formData.glavniProblemi.includes("Nijedan")}
+              onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
+            />
+            Nijedan
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button
+            onClick={sledeciKorak}
+            disabled={formData.glavniProblemi.length === 0}
+          >
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 6 && (
+        <div>
+          <h2>5. Kako biste opisali osetljivost vaše kože?</h2>
+          <label>
+            <input
+              type="radio"
+              name="osetljivostKoze"
+              value="Sklona_iritacijama"
+              checked={formData.osetljivostKoze === "Sklona_iritacijama"}
+              onChange={(e) => azurirajPolje("osetljivostKoze", e.target.value)}
+            />
+            Sklona iritacijama i crvenilu
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="osetljivostKoze"
+              value="Konstantno_perutanje"
+              checked={formData.osetljivostKoze === "Konstantno_perutanje"}
+              onChange={(e) => azurirajPolje("osetljivostKoze", e.target.value)}
+            />
+            Konstantno perutanje
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="osetljivostKoze"
+              value="Normalna_otpornost"
+              checked={formData.osetljivostKoze === "Normalna_otpornost"}
+              onChange={(e) => azurirajPolje("osetljivostKoze", e.target.value)}
+            />
+            Normalna otpornost
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button onClick={sledeciKorak} disabled={!formData.osetljivostKoze}>
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 3 && (
+        <div>
+          <h2>2.1. Da li ste trudni ili dojite?</h2>
+          <label>
+            <input
+              type="radio"
+              name="trudnicaIliDojilja"
+              value="Da"
+              checked={formData.trudnicaIliDojilja === "Da"}
+              onChange={(e) =>
+                azurirajPolje("trudnicaIliDojilja", e.target.value)
+              }
+            />
+            Da
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="trudnicaIliDojilja"
+              value="Ne"
+              checked={formData.trudnicaIliDojilja === "Ne"}
+              onChange={(e) =>
+                azurirajPolje("trudnicaIliDojilja", e.target.value)
+              }
+            />
+            Ne
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button
+            onClick={sledeciKorak}
+            disabled={!formData.trudnicaIliDojilja}
+          >
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 7 && (
+        <div>
+          <h2>6. Koliko vremena provodite izloženi suncu?</h2>
+          <label>
+            <input
+              type="radio"
+              name="izlozenostSunca"
+              value="Uglavnom_u_zatvorenom"
+              checked={formData.izlozenostSunca === "Uglavnom_u_zatvorenom"}
+              onChange={(e) => azurirajPolje("izlozenostSunca", e.target.value)}
+            />
+            Uglavnom sam u zatvorenom prostoru
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="izlozenostSunca"
+              value="Povremeno_na_otvorenom"
+              checked={formData.izlozenostSunca === "Povremeno_na_otvorenom"}
+              onChange={(e) => azurirajPolje("izlozenostSunca", e.target.value)}
+            />
+            Povremeno provodim vreme na otvorenom, prošetam
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="izlozenostSunca"
+              value="Dosta_vremena_na_otvorenom"
+              checked={
+                formData.izlozenostSunca === "Dosta_vremena_na_otvorenom"
+              }
+              onChange={(e) => azurirajPolje("izlozenostSunca", e.target.value)}
+            />
+            Provodim dosta vremena na otvorenom
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button onClick={sledeciKorak} disabled={!formData.izlozenostSunca}>
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 8 && (
+        <div>
+          <h2>7. Da li ste ranije koristili aktivne supstance u nezi kože?</h2>
+          <label>
+            <input
+              type="radio"
+              name="koristioAktivneSupstance"
+              value="Da"
+              checked={formData.koristioAktivneSupstance === "Da"}
+              onChange={(e) =>
+                azurirajPolje("koristioAktivneSupstance", e.target.value)
+              }
+            />
+            Da
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="koristioAktivneSupstance"
+              value="Ne"
+              checked={formData.koristioAktivneSupstance === "Ne"}
+              onChange={(e) =>
+                azurirajPolje("koristioAktivneSupstance", e.target.value)
+              }
+            />
+            Ne
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="koristioAktivneSupstance"
+              value="Ne_znam"
+              checked={formData.koristioAktivneSupstance === "Ne_znam"}
+              onChange={(e) =>
+                azurirajPolje("koristioAktivneSupstance", e.target.value)
+              }
+            />
+            Ne znam
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button
+            onClick={posleAktivneSupstance}
+            disabled={!formData.koristioAktivneSupstance}
+          >
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 9 && (
+        <div>
+          <h2>
+            7.1. Koje aktivne supstance ste koristili? (označite sve što važi)
+          </h2>
+          {[
+            "Retinol",
+            "Salicilna kiselina",
+            "Glikolna kiselina",
+            "Vitamin C",
+            "Niacinamid",
+            "Ceramidi",
+          ].map((sastojak) => (
+            <div key={sastojak}>
+              <label>
+                <input
+                  type="checkbox"
+                  value={sastojak}
+                  checked={formData.korisceniSastojci.includes(sastojak)}
+                  onChange={(e) =>
+                    promeniSastojak(e.target.value, e.target.checked)
+                  }
+                />
+                {sastojak}
+              </label>
+            </div>
+          ))}
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button
+            onClick={sledeciKorak}
+            disabled={formData.korisceniSastojci.length === 0}
+          >
+            Dalje
+          </button>
+        </div>
+      )}
+
+      {korak === 10 && (
+        <div>
+          <h2>8. Koji je vaš budžet za proizvode za negu kože?</h2>
+          <label>
+            <input
+              type="radio"
+              name="budzet"
+              value="Ekonomican"
+              checked={formData.budzet === "Ekonomican"}
+              onChange={(e) => azurirajPolje("budzet", e.target.value)}
+            />
+            Ekonomičan
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="budzet"
+              value="Srednji"
+              checked={formData.budzet === "Srednji"}
+              onChange={(e) => azurirajPolje("budzet", e.target.value)}
+            />
+            Srednji
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="budzet"
+              value="Premium"
+              checked={formData.budzet === "Premium"}
+              onChange={(e) => azurirajPolje("budzet", e.target.value)}
+            />
+            Premium
+          </label>
+          <br />
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>{" "}
+          <button onClick={sledeciKorak} disabled={!formData.budzet}>
+            Završi
+          </button>
+        </div>
+      )}
+
+      {korak === 11 && (
+        <div>
+          <h2>Pregled unetih odgovora</h2>
+          <p>
+            <strong>Godine:</strong> {formData.godine}
+          </p>
+          <p>
+            <strong>Pol:</strong> {formData.pol}
+          </p>
+          <p>
+            <strong>Osećaj nakon pranja:</strong> {formData.osecajNakonPranja}
+          </p>
+          <p>
+            <strong>Glavni problemi:</strong>{" "}
+            {formData.glavniProblemi.join(", ") || "-"}
+          </p>
+          <p>
+            <strong>Osetljivost kože:</strong> {formData.osetljivostKoze}
+          </p>
+          <p>
+            <strong>Trudnoća/dojenje:</strong> {formData.trudnicaIliDojilja}
+          </p>
+          <p>
+            <strong>Izloženost suncu:</strong> {formData.izlozenostSunca}
+          </p>
+          <p>
+            <strong>Koristila aktivne supstance:</strong>{" "}
+            {formData.koristioAktivneSupstance}
+          </p>
+          <p>
+            <strong>Korišćeni sastojci:</strong>{" "}
+            {formData.korisceniSastojci.join(", ") || "-"}
+          </p>
+          <p>
+            <strong>Budžet:</strong> {formData.budzet}
+          </p>
+          <br />
+          <button onClick={prethodniKorak}>Nazad</button>
+        </div>
+      )}
     </div>
   );
 }

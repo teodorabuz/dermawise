@@ -5,6 +5,7 @@ import java.util.List;
 public class SkincareRequest {
 
     private int godine;
+    private String pol;
     private String osecajNakonPranja;
     private List<String> glavniProblemi;
     private String osetljivostKoze;
@@ -88,4 +89,13 @@ public class SkincareRequest {
     public void setKorisceniSastojci(List<String> korisceniSastojci) {
         this.korisceniSastojci = korisceniSastojci;
     }
+
+	public String getPol() {
+		return pol;
+	}
+
+	public void setPol(String pol) {
+		this.pol = pol;
+	}
+    
 }
