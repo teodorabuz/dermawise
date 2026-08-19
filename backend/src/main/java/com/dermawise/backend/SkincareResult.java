@@ -8,6 +8,7 @@ public class SkincareResult {
     private String tipKoze;
     private Routine jutarnjaRutina = new Routine();
     private Routine vecernjaRutina = new Routine();
+    private Dodaci dodaciRutini = new Dodaci();
     private List<String> upozorenja = new ArrayList<>();
 
     public String getTipKoze() {
@@ -38,7 +39,15 @@ public class SkincareResult {
         return upozorenja;
     }
 
-    public void setUpozorenja(List<String> upozorenja) {
+    public Dodaci getDodaciRutini() {
+		return dodaciRutini;
+	}
+
+	public void setDodaciRutini(Dodaci dodaciRutini) {
+		this.dodaciRutini = dodaciRutini;
+	}
+
+	public void setUpozorenja(List<String> upozorenja) {
         this.upozorenja = upozorenja;
     }
 

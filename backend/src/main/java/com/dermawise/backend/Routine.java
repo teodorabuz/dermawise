@@ -6,6 +6,7 @@ import java.util.List;
 public class Routine {
 
     private String umivalica;
+    private String toner;
     private String serum;
     private String krema;
     private String spf;
@@ -19,7 +20,15 @@ public class Routine {
         this.umivalica = umivalica;
     }
 
-    public String getSerum() {
+    public String getToner() {
+		return toner;
+	}
+
+	public void setToner(String toner) {
+		this.toner = toner;
+	}
+
+	public String getSerum() {
         return serum;
     }
 

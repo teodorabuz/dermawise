@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 
 function App() {
   const [korak, setKorak] = useState(1);
@@ -115,32 +116,37 @@ function App() {
   };
 
   return (
-    <div
-      style={{ maxWidth: "500px", margin: "50px auto", fontFamily: "Arial" }}
-    >
-      <h1>DermaWise</h1>
+    <div className="container">
+      <h1 className="naslov">DermaWise</h1>
 
       {korak === 1 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>1. Koliko imate godina?</h2>
           <input
             type="number"
+            className="unos-broj"
             value={formData.godine}
             onChange={(e) => azurirajPolje("godine", e.target.value)}
             placeholder="Unesite broj godina"
           />
           <br />
           <br />
-          <button onClick={sledeciKorak} disabled={!formData.godine}>
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={!formData.godine}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 2 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>2. Pol:</h2>
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="pol"
@@ -151,7 +157,7 @@ function App() {
             Ženski
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="pol"
@@ -162,7 +168,7 @@ function App() {
             Muški
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="pol"
@@ -174,19 +180,27 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button onClick={posleIzboraPola} disabled={!formData.pol}>
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={posleIzboraPola}
+              disabled={!formData.pol}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 4 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>
             3. Kakav vam je osećaj na licu sat vremena nakon pranja samo vodom?
           </h2>
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="osecajNakonPranja"
@@ -199,7 +213,7 @@ function App() {
             Zategnuto
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="osecajNakonPranja"
@@ -212,7 +226,7 @@ function App() {
             Sjajno u T-zoni (čelo, nos, brada)
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="osecajNakonPranja"
@@ -225,7 +239,7 @@ function App() {
             Sjajno na celom licu
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="osecajNakonPranja"
@@ -239,19 +253,27 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button onClick={sledeciKorak} disabled={!formData.osecajNakonPranja}>
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={!formData.osecajNakonPranja}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 5 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>
             4. Koji su vaši glavni problemi sa kožom? (označite sve što važi)
           </h2>
-          <label>
+          <label className="opcija">
             <input
               type="checkbox"
               value="Akne"
@@ -261,7 +283,7 @@ function App() {
             Akne
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="checkbox"
               value="Bore"
@@ -271,7 +293,7 @@ function App() {
             Bore
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="checkbox"
               value="Fleke"
@@ -281,7 +303,7 @@ function App() {
             Fleke
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="checkbox"
               value="Dehidratacija"
@@ -291,7 +313,7 @@ function App() {
             Dehidratacija
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="checkbox"
               value="Pore"
@@ -301,7 +323,7 @@ function App() {
             Proširene pore
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="checkbox"
               value="Nijedan"
@@ -312,20 +334,25 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button
-            onClick={sledeciKorak}
-            disabled={formData.glavniProblemi.length === 0}
-          >
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={formData.glavniProblemi.length === 0}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 6 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>5. Kako biste opisali osetljivost vaše kože?</h2>
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="osetljivostKoze"
@@ -336,7 +363,7 @@ function App() {
             Sklona iritacijama i crvenilu
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="osetljivostKoze"
@@ -347,7 +374,7 @@ function App() {
             Konstantno perutanje
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="osetljivostKoze"
@@ -359,17 +386,25 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button onClick={sledeciKorak} disabled={!formData.osetljivostKoze}>
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={!formData.osetljivostKoze}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 3 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>2.1. Da li ste trudni ili dojite?</h2>
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="trudnicaIliDojilja"
@@ -382,7 +417,7 @@ function App() {
             Da
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="trudnicaIliDojilja"
@@ -396,20 +431,25 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button
-            onClick={sledeciKorak}
-            disabled={!formData.trudnicaIliDojilja}
-          >
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={!formData.trudnicaIliDojilja}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 7 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>6. Koliko vremena provodite izloženi suncu?</h2>
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="izlozenostSunca"
@@ -420,7 +460,7 @@ function App() {
             Uglavnom sam u zatvorenom prostoru
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="izlozenostSunca"
@@ -431,7 +471,7 @@ function App() {
             Povremeno provodim vreme na otvorenom, prošetam
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="izlozenostSunca"
@@ -445,17 +485,25 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button onClick={sledeciKorak} disabled={!formData.izlozenostSunca}>
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={!formData.izlozenostSunca}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 8 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>7. Da li ste ranije koristili aktivne supstance u nezi kože?</h2>
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="koristioAktivneSupstance"
@@ -468,7 +516,7 @@ function App() {
             Da
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="koristioAktivneSupstance"
@@ -481,7 +529,7 @@ function App() {
             Ne
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="koristioAktivneSupstance"
@@ -495,18 +543,23 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button
-            onClick={posleAktivneSupstance}
-            disabled={!formData.koristioAktivneSupstance}
-          >
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={posleAktivneSupstance}
+              disabled={!formData.koristioAktivneSupstance}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 9 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>
             7.1. Koje aktivne supstance ste koristili? (označite sve što važi)
           </h2>
@@ -519,7 +572,7 @@ function App() {
             "Ceramidi",
           ].map((sastojak) => (
             <div key={sastojak}>
-              <label>
+              <label className="opcija">
                 <input
                   type="checkbox"
                   value={sastojak}
@@ -533,20 +586,25 @@ function App() {
             </div>
           ))}
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button
-            onClick={sledeciKorak}
-            disabled={formData.korisceniSastojci.length === 0}
-          >
-            Dalje
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={formData.korisceniSastojci.length === 0}
+            >
+              Dalje
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 10 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>8. Koji je vaš budžet za proizvode za negu kože?</h2>
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="budzet"
@@ -557,7 +615,7 @@ function App() {
             Ekonomičan
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="budzet"
@@ -568,7 +626,7 @@ function App() {
             Srednji
           </label>
           <br />
-          <label>
+          <label className="opcija">
             <input
               type="radio"
               name="budzet"
@@ -580,15 +638,23 @@ function App() {
           </label>
           <br />
           <br />
-          <button onClick={prethodniKorak}>Nazad</button>{" "}
-          <button onClick={sledeciKorak} disabled={!formData.budzet}>
-            Završi
-          </button>
+          <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
+            <button
+              className="btn-dalje"
+              onClick={sledeciKorak}
+              disabled={!formData.budzet}
+            >
+              Završi
+            </button>
+          </div>
         </div>
       )}
 
       {korak === 11 && (
-        <div>
+        <div className="korak-sadrzaj">
           <h2>Pregled unetih odgovora</h2>
           <p>
             <strong>Godine:</strong> {formData.godine}

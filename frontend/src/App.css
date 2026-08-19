@@ -1,0 +1,157 @@
+:root {
+  --pastel-green: #a8e6cf;
+  --pastel-green-dark: #6fcf97;
+  --pastel-blue: #aed9e0;
+  --pastel-blue-dark: #7fc8d9;
+  --pastel-red: #ffb3b3;
+  --pastel-red-dark: #ff8c8c;
+}
+
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.naslov {
+  font-weight: 700;
+  color: var(--pastel-green-dark);
+  margin-bottom: 10px;
+}
+
+.korak-sadrzaj {
+  animation: fadeIn 0.4s ease;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2,
+h3 {
+  font-weight: 600;
+  color: #3d5a5a;
+  text-align: center;
+}
+
+.opcija {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 14px;
+  background: #f7fbfa;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.opcija:hover {
+  background: #e8f5e9;
+  transform: translateX(4px);
+}
+
+.opcija:has(input:checked) {
+  background: var(--pastel-green);
+  border-color: var(--pastel-green-dark);
+  font-weight: 600;
+}
+
+.opcija input {
+  accent-color: var(--pastel-green-dark);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.unos-broj {
+  display: block;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--pastel-blue);
+  font-family: inherit;
+  font-size: 16px;
+  margin: 16px 0;
+  transition: border-color 0.2s ease;
+}
+
+.unos-broj:focus {
+  outline: none;
+  border-color: var(--pastel-green-dark);
+}
+
+.dugmici {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+button {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-nazad {
+  background: var(--pastel-blue);
+  color: #2c3e50;
+}
+
+.btn-nazad:hover {
+  background: var(--pastel-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-dalje {
+  background: var(--pastel-green);
+  color: #1b4332;
+}
+
+.btn-dalje:hover:not(:disabled) {
+  background: var(--pastel-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+}
+
+button:disabled {
+  background: #e0e0e0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.greska-tekst {
+  color: var(--pastel-red-dark);
+  font-weight: 600;
+}
+
+.rezultat-sekcija {
+  background: #f7fbfa;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
