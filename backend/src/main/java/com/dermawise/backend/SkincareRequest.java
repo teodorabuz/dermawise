@@ -12,7 +12,7 @@ public class SkincareRequest {
     private String budzet;
     private String trudnicaIliDojilja;
     private String izlozenostSunca;
-    private boolean koristioAktivneSupstance;
+    private String koristioAktivneSupstance;
     private List<String> korisceniSastojci;
 
     public SkincareRequest() {
@@ -74,11 +74,11 @@ public class SkincareRequest {
         this.izlozenostSunca = izlozenostSunca;
     }
 
-    public boolean isKoristioAktivneSupstance() {
+    public String isKoristioAktivneSupstance() {
         return koristioAktivneSupstance;
     }
 
-    public void setKoristioAktivneSupstance(boolean koristioAktivneSupstance) {
+    public void setKoristioAktivneSupstance(String koristioAktivneSupstance) {
         this.koristioAktivneSupstance = koristioAktivneSupstance;
     }
 

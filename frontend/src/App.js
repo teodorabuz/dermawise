@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [korak, setKorak] = useState(1);
+  const [korak, setKorak] = useState(0);
 
   const [formData, setFormData] = useState({
     godine: "",
@@ -119,6 +119,29 @@ function App() {
     <div className="container">
       <h1 className="naslov">DermaWise</h1>
 
+      {korak === 0 && (
+        <div className="korak-sadrzaj" style={{ textAlign: "center" }}>
+          <p
+            style={{
+              fontSize: "16px",
+              lineHeight: "1.6",
+              marginBottom: "24px",
+            }}
+          >
+            DermaWise je ekspertni sistem koji na osnovu vaših odgovora o tipu
+            kože, navikama i potrebama kreira personalizovanu jutarnju i
+            večernju rutinu nege kože. Odgovorite na nekoliko kratkih pitanja, a
+            sistem će vam predložiti proizvode i aktivne supstance prilagođene
+            baš vama.
+          </p>
+          <div className="dugmici">
+            <button className="btn-dalje" onClick={() => setKorak(1)}>
+              Započni test
+            </button>
+          </div>
+        </div>
+      )}
+
       {korak === 1 && (
         <div className="korak-sadrzaj">
           <h2>1. Koliko imate godina?</h2>
@@ -132,6 +155,9 @@ function App() {
           <br />
           <br />
           <div className="dugmici">
+            <button className="btn-nazad" onClick={prethodniKorak}>
+              Nazad
+            </button>{" "}
             <button
               className="btn-dalje"
               onClick={sledeciKorak}
@@ -644,7 +670,7 @@ function App() {
             </button>{" "}
             <button
               className="btn-dalje"
-              onClick={sledeciKorak}
+              onClick={posaljiPodatke}
               disabled={!formData.budzet}
             >
               Završi
@@ -655,42 +681,80 @@ function App() {
 
       {korak === 11 && (
         <div className="korak-sadrzaj">
-          <h2>Pregled unetih odgovora</h2>
-          <p>
-            <strong>Godine:</strong> {formData.godine}
-          </p>
-          <p>
-            <strong>Pol:</strong> {formData.pol}
-          </p>
-          <p>
-            <strong>Osećaj nakon pranja:</strong> {formData.osecajNakonPranja}
-          </p>
-          <p>
-            <strong>Glavni problemi:</strong>{" "}
-            {formData.glavniProblemi.join(", ") || "-"}
-          </p>
-          <p>
-            <strong>Osetljivost kože:</strong> {formData.osetljivostKoze}
-          </p>
-          <p>
-            <strong>Trudnoća/dojenje:</strong> {formData.trudnicaIliDojilja}
-          </p>
-          <p>
-            <strong>Izloženost suncu:</strong> {formData.izlozenostSunca}
-          </p>
-          <p>
-            <strong>Koristila aktivne supstance:</strong>{" "}
-            {formData.koristioAktivneSupstance}
-          </p>
-          <p>
-            <strong>Korišćeni sastojci:</strong>{" "}
-            {formData.korisceniSastojci.join(", ") || "-"}
-          </p>
-          <p>
-            <strong>Budžet:</strong> {formData.budzet}
-          </p>
-          <br />
-          <button onClick={prethodniKorak}>Nazad</button>
+          {ucitavanje && (
+            <p style={{ textAlign: "center" }}>Učitavanje rezultata...</p>
+          )}
+
+          {greska && (
+            <div style={{ textAlign: "center" }}>
+              <p className="greska-tekst">{greska}</p>
+              <div className="dugmici">
+                <button className="btn-nazad" onClick={() => setKorak(10)}>
+                  Nazad
+                </button>
+              </div>
+            </div>
+          )}
+
+          {rezultat && !ucitavanje && (
+            <div>
+              <h2>Vaš tip kože: {rezultat.tipKoze}</h2>
+
+              <div className="rezultat-sekcija">
+                <h3>Jutarnja rutina</h3>
+                <p>
+                  <strong>Umivalica:</strong>{" "}
+                  {rezultat.jutarnjaRutina.umivalica || "-"}
+                </p>
+                <p>
+                  <strong>Serum:</strong> {rezultat.jutarnjaRutina.serum || "-"}
+                </p>
+                <p>
+                  <strong>Krema:</strong> {rezultat.jutarnjaRutina.krema || "-"}
+                </p>
+                <p>
+                  <strong>SPF:</strong> {rezultat.jutarnjaRutina.spf || "-"}
+                </p>
+                <p>
+                  <strong>Aktivne supstance:</strong>{" "}
+                  {rezultat.jutarnjaRutina.aktivneSupstance.length > 0
+                    ? rezultat.jutarnjaRutina.aktivneSupstance.join(", ")
+                    : "-"}
+                </p>
+              </div>
+
+              <div className="rezultat-sekcija">
+                <h3>Večernja rutina</h3>
+                <p>
+                  <strong>Umivalica:</strong>{" "}
+                  {rezultat.vecernjaRutina.umivalica || "-"}
+                </p>
+                <p>
+                  <strong>Serum:</strong> {rezultat.vecernjaRutina.serum || "-"}
+                </p>
+                <p>
+                  <strong>Krema:</strong> {rezultat.vecernjaRutina.krema || "-"}
+                </p>
+                <p>
+                  <strong>Aktivne supstance:</strong>{" "}
+                  {rezultat.vecernjaRutina.aktivneSupstance.length > 0
+                    ? rezultat.vecernjaRutina.aktivneSupstance.join(", ")
+                    : "-"}
+                </p>
+              </div>
+
+              {rezultat.upozorenja.length > 0 && (
+                <div className="rezultat-sekcija">
+                  <h3>Upozorenja</h3>
+                  <ul>
+                    {rezultat.upozorenja.map((u, i) => (
+                      <li key={i}>{u}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
