@@ -74,7 +74,7 @@ public class SkincareRequest {
         this.izlozenostSunca = izlozenostSunca;
     }
 
-    public String isKoristioAktivneSupstance() {
+    public String getKoristioAktivneSupstance() {
         return koristioAktivneSupstance;
     }
 

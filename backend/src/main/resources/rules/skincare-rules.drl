@@ -5,32 +5,32 @@ import com.dermawise.backend.SkincareResult
 
 rule "Tip koze - suva"
 when
-    $zahtev : SkincareRequest(osecajNakonPranja == "Zategnuto")
-    $rezultat : SkincareResult()
+    SkincareRequest(osecajNakonPranja == "Zategnuto")
+    rezultat: SkincareResult()
 then
-    $rezultat.setTipKoze("Suva");
+    rezultat.setTipKoze("Suva");
 end
 
 rule "Tip koze - kombinovana"
 when
-    $zahtev : SkincareRequest(osecajNakonPranja == "Sjajno_T_zona")
-    $rezultat : SkincareResult()
+    SkincareRequest(osecajNakonPranja == "Sjajno_T_zona")
+    rezultat: SkincareResult()
 then
-    $rezultat.setTipKoze("Kombinovana");
+    rezultat.setTipKoze("Kombinovana");
 end
 
 rule "Tip koze - masna"
 when
-    $zahtev : SkincareRequest(osecajNakonPranja == "Sjajno_Celo")
-    $rezultat : SkincareResult()
+    SkincareRequest(osecajNakonPranja == "Sjajno_Celo")
+    rezultat: SkincareResult()
 then
-    $rezultat.setTipKoze("Masna");
+    rezultat.setTipKoze("Masna");
 end
 
 rule "Tip koze - normalna"
 when
-    $zahtev : SkincareRequest(osecajNakonPranja == "Normalno")
-    $rezultat : SkincareResult()
+    SkincareRequest(osecajNakonPranja == "Normalno")
+    rezultat: SkincareResult()
 then
-    $rezultat.setTipKoze("Normalna");
+    rezultat.setTipKoze("Normalna");
 end

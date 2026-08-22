@@ -707,6 +707,9 @@ function App() {
                   {rezultat.jutarnjaRutina.umivalica || "-"}
                 </p>
                 <p>
+                  <strong>Toner:</strong> {rezultat.jutarnjaRutina.toner || "-"}
+                </p>
+                <p>
                   <strong>Serum:</strong> {rezultat.jutarnjaRutina.serum || "-"}
                 </p>
                 <p>
@@ -730,6 +733,9 @@ function App() {
                   {rezultat.vecernjaRutina.umivalica || "-"}
                 </p>
                 <p>
+                  <strong>Toner:</strong> {rezultat.jutarnjaRutina.toner || "-"}
+                </p>
+                <p>
                   <strong>Serum:</strong> {rezultat.vecernjaRutina.serum || "-"}
                 </p>
                 <p>
@@ -742,6 +748,27 @@ function App() {
                     : "-"}
                 </p>
               </div>
+
+              {rezultat.dodaciRutini && (
+                <div className="rezultat-sekcija">
+                  <h3>Dodaci</h3>
+                  <p>
+                    <strong>Maska:</strong> {rezultat.dodaciRutini.maska || "-"}
+                  </p>
+                  <p>
+                    <strong>Esencija:</strong>{" "}
+                    {rezultat.dodaciRutini.esencija || "-"}
+                  </p>
+                  <p>
+                    <strong>Ampule:</strong>{" "}
+                    {rezultat.dodaciRutini.ampule || "-"}
+                  </p>
+                  <p>
+                    <strong>Uputstvo:</strong>{" "}
+                    {rezultat.dodaciRutini.uputstvo || "-"}
+                  </p>
+                </div>
+              )}
 
               {rezultat.upozorenja.length > 0 && (
                 <div className="rezultat-sekcija">

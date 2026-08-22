@@ -6,6 +6,7 @@ import java.util.List;
 public class SkincareResult {
 
     private String tipKoze;
+    private String kategorijaNege;
     private Routine jutarnjaRutina = new Routine();
     private Routine vecernjaRutina = new Routine();
     private Dodaci dodaciRutini = new Dodaci();
@@ -18,8 +19,16 @@ public class SkincareResult {
     public void setTipKoze(String tipKoze) {
         this.tipKoze = tipKoze;
     }
+    
+    public String getKategorijaNege() {
+		return kategorijaNege;
+	}
 
-    public Routine getJutarnjaRutina() {
+	public void setKategorijaNege(String kategorijaNege) {
+		this.kategorijaNege = kategorijaNege;
+	}
+
+	public Routine getJutarnjaRutina() {
         return jutarnjaRutina;
     }
 
