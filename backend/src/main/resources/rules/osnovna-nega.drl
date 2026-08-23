@@ -1,0 +1,184 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+
+rule "Masna koža, ekonomičan budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Ekonomican")
+    rezultat: SkincareResult(tipKoze == "Masna")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("alverde NATURKOSMETIK HYDRO gel za umivanje lica - morske alge, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("alverde NATURKOSMETIK HYDRO gel za umivanje lica - morske alge, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Ziaja Tonik za lice manuka tree, za masnu i mešovitu kožu, 200 ml");
+	rezultat.getVecernjaRutina().setToner("Ziaja Tonik za lice manuka tree, za masnu i mešovitu kožu, 200 ml");
+	rezultat.getJutarnjaRutina().setKrema("Balea AQUA gel krema za lice, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Balea Hidrantna noćna krema za lice, 50 ml");
+	update(rezultat);
+end
+
+rule "Masna koža, srednji budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Srednji")
+    rezultat: SkincareResult(tipKoze == "Masna")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("CeraVe Foaming Cleanser (Gel za čišćenje lica), 236 ml");
+	rezultat.getVecernjaRutina().setUmivalica("CeraVe Foaming Cleanser (Gel za čišćenje lica), 236 ml");
+	rezultat.getJutarnjaRutina().setToner("Avene Cleanance Tonik za čišćenje, 200 ml");
+	rezultat.getVecernjaRutina().setToner("Avene Cleanance Tonik za čišćenje, 200 ml");
+	rezultat.getJutarnjaRutina().setKrema("La Roche-Posay Effaclar Mat (hidrantna krema), 40 ml");
+	rezultat.getVecernjaRutina().setKrema("CeraVe PM Facial Moisturizing Lotion, 52 ml");
+	update(rezultat);
+end 
+
+rule "Masna koža, premium budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Premium")
+    rezultat: SkincareResult(tipKoze == "Masna")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Kiehl's Blue Astringent Herbal Lotion, 250 ml");
+	rezultat.getVecernjaRutina().setToner("Kiehl's Blue Astringent Herbal Lotion, 250 ml");
+	rezultat.getJutarnjaRutina().setKrema("La Roche-Posay Effaclar Duo(+) M / Clarifying Fluid, 40 ml");
+	rezultat.getVecernjaRutina().setKrema("Vichy Normaderm Phytosolution Double-Correction, 50 ml");
+	update(rezultat);
+end 
+
+rule "Suva koža, ekonomičan budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Ekonomican")
+    rezultat: SkincareResult(tipKoze == "Suva")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Balea Rich Gel za umivanje, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Balea Rich Gel za umivanje, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Balea Beauty Expert Hidratantni tonik, 100 ml");
+	rezultat.getVecernjaRutina().setToner("Balea Beauty Expert Hidratantni tonik, 100 ml");
+	rezultat.getJutarnjaRutina().setKrema("Balea Aqua Hidratantna dnevna krema, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Balea Rich Noćna krema sa hranljivim uljima, 50 ml");
+	update(rezultat);
+end
+
+rule "Suva koža, srednji budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Srednji")
+    rezultat: SkincareResult(tipKoze == "Suva")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Gorsen Face clean pena za čišćenje lica, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Gorsen Face clean pena za čišćenje lica, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Round Lab 1025 Dokdo toner za lice, 200 ml");
+	rezultat.getVecernjaRutina().setToner("Round Lab 1025 Dokdo toner za lice, 200 ml");
+	rezultat.getJutarnjaRutina().setKrema("Weleda Skin Food Light dnevna krema, 75 ml");
+	rezultat.getVecernjaRutina().setKrema("Hada Labo Tokyo Intense Hydrating Skin-Plumping gel-krema, 75 ml");
+	update(rezultat);
+end 
+
+rule "Suva koža, premium budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Premium")
+    rezultat: SkincareResult(tipKoze == "Suva")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Caudalie Vinosource-Hydra Moisturizing Cleansing Cream, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Caudalie Vinosource-Hydra Moisturizing Cleansing Cream, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Kiehl's Ultra Facial Toner, 250 ml");
+	rezultat.getVecernjaRutina().setToner("Kiehl's Ultra Facial Toner, 250 ml");
+	rezultat.getJutarnjaRutina().setKrema("Clarins Extra-Comfort / Hydra-Essentiel Rich Cream, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Clinique Moisture Surge 100H Auto-Replenishing Hydrator, 50 ml");
+	update(rezultat);
+end 
+
+rule "Kombinovana koža, ekonomičan budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Ekonomican")
+    rezultat: SkincareResult(tipKoze == "Kombinovana")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Balea Balance Gel za umivanje, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Balea Balance Gel za umivanje, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Balea Aqua Hidratantni tonik, 150 ml");
+	rezultat.getVecernjaRutina().setToner("Balea Aqua Hidratantni tonik, 150 ml");
+	rezultat.getJutarnjaRutina().setKrema("Balea Aqua Hidratantna gel-krema, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Balea Natural Beauty Hidratantna noćna krema, 50 ml");
+	update(rezultat);
+end
+
+rule "Kombinovana koža, srednji budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Srednji")
+    rezultat: SkincareResult(tipKoze == "Kombinovana")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("CeraVe Hydrating Cleanser (Gel-krema za čišćenje), 236 ml");
+	rezultat.getVecernjaRutina().setUmivalica("CeraVe Hydrating Cleanser (Gel-krema za čišćenje), 236 ml");
+	rezultat.getJutarnjaRutina().setToner("Avene Cleanance Tonik za čišćenje, 200 ml");
+	rezultat.getVecernjaRutina().setToner("Avene Cleanance Tonik za čišćenje, 200 ml");
+	rezultat.getJutarnjaRutina().setKrema("Neutrogena Hydro Boost Water Gel, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Bustaderm / CeraVe PM Facial Moisturizing Lotion, 52 ml");
+	update(rezultat);
+end 
+
+rule "Kombinovana koža, premium budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Premium")
+    rezultat: SkincareResult(tipKoze == "Kombinovana")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Clarins Hydrating Toning Lotion, 200 ml");
+	rezultat.getVecernjaRutina().setToner("Clarins Hydrating Toning Lotion, 200 ml");
+	rezultat.getJutarnjaRutina().setKrema("Clinique Moisture Surge 100H Auto-Replenishing Hydrator, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Clarins Hydra-Essentiel [HA²] Light Cream, 50 ml");
+	update(rezultat);
+end
+
+rule "Normalna koža, ekonomičan budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Ekonomican")
+    rezultat: SkincareResult(tipKoze == "Normalna")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Balea Natural Beauty Gel za umivanje sa organskim ekstraktom, 150 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Balea Natural Beauty Gel za umivanje sa organskim ekstraktom, 150 ml");
+	rezultat.getJutarnjaRutina().setToner("Balea Rose Water / Ružina vodica u spreju, 150 ml");
+	rezultat.getVecernjaRutina().setToner("Balea Rose Water / Ružina vodica u spreju, 150 ml");
+	rezultat.getJutarnjaRutina().setKrema("Balea Natural Beauty Hidratantna dnevna krema, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Balea Natural Beauty Noćna krema sa organskim bademovim uljem, 50 ml");
+	update(rezultat);
+end
+
+rule "Normalna koža, srednji budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Srednji")
+    rezultat: SkincareResult(tipKoze == "Normalna")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Bioderma Sensibio Gel moussant, 200 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Bioderma Sensibio Gel moussant, 200 ml");
+	rezultat.getJutarnjaRutina().setToner("Uriage Termalna voda u spreju, 150 ml");
+	rezultat.getVecernjaRutina().setToner("Uriage Termalna voda u spreju, 150 ml");
+	rezultat.getJutarnjaRutina().setKrema("Vichy Aqualia Thermal Gel-Cream, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Avene Hydrance Rich Hydrating Cream, 40 ml");
+	update(rezultat);
+end 
+
+rule "Normalna koža, premium budžet - umivalica, toner i krema"
+salience 80
+when
+	SkincareRequest(budzet == "Premium")
+    rezultat: SkincareResult(tipKoze == "Normalna")
+then
+	rezultat.getJutarnjaRutina().setUmivalica("Clarins Soothing Gentle Foaming Cleanser, 125 ml");
+	rezultat.getVecernjaRutina().setUmivalica("Clarins Soothing Gentle Foaming Cleanser, 125 ml");
+	rezultat.getJutarnjaRutina().setToner("Kiehl's Herbal Extract Alcohol-Free Toner, 250 ml");
+	rezultat.getVecernjaRutina().setToner("Kiehl's Herbal Extract Alcohol-Free Toner, 250 ml");
+	rezultat.getJutarnjaRutina().setKrema("Clarins Hydra-Essentiel [HA²] Silky Cream, 50 ml");
+	rezultat.getVecernjaRutina().setKrema("Biotherm Aquasource Night Spa, 50 ml");
+	update(rezultat);
+end

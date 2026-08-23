@@ -4,33 +4,41 @@ import com.dermawise.backend.SkincareRequest
 import com.dermawise.backend.SkincareResult
 
 rule "Tip koze - suva"
+salience 100
 when
     SkincareRequest(osecajNakonPranja == "Zategnuto")
     rezultat: SkincareResult()
 then
     rezultat.setTipKoze("Suva");
+    update(rezultat);
 end
 
 rule "Tip koze - kombinovana"
+salience 100
 when
     SkincareRequest(osecajNakonPranja == "Sjajno_T_zona")
     rezultat: SkincareResult()
 then
     rezultat.setTipKoze("Kombinovana");
+    update(rezultat);
 end
 
 rule "Tip koze - masna"
+salience 100
 when
     SkincareRequest(osecajNakonPranja == "Sjajno_Celo")
     rezultat: SkincareResult()
 then
     rezultat.setTipKoze("Masna");
+    update(rezultat);
 end
 
 rule "Tip koze - normalna"
+salience 100
 when
     SkincareRequest(osecajNakonPranja == "Normalno")
     rezultat: SkincareResult()
 then
     rezultat.setTipKoze("Normalna");
+    update(rezultat);
 end
