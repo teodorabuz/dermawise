@@ -63,7 +63,7 @@ function App() {
   };
 
   const posleIzboraPola = () => {
-    if (formData.pol === "Muski") {
+    if (formData.pol === "MUSKI") {
       setFormData({ ...formData, trudnicaIliDojilja: "Ne" });
       setKorak(4);
     } else {
@@ -176,8 +176,8 @@ function App() {
             <input
               type="radio"
               name="pol"
-              value="Zenski"
-              checked={formData.pol === "Zenski"}
+              value="ZENSKI"
+              checked={formData.pol === "ZENSKI"}
               onChange={(e) => azurirajPolje("pol", e.target.value)}
             />
             Ženski
@@ -187,8 +187,8 @@ function App() {
             <input
               type="radio"
               name="pol"
-              value="Muski"
-              checked={formData.pol === "Muski"}
+              value="MUSKI"
+              checked={formData.pol === "MUSKI"}
               onChange={(e) => azurirajPolje("pol", e.target.value)}
             />
             Muški
@@ -198,8 +198,8 @@ function App() {
             <input
               type="radio"
               name="pol"
-              value="Nedefinisano"
-              checked={formData.pol === "Nedefinisano"}
+              value="NEDEFINISANO"
+              checked={formData.pol === "NEDEFINISANO"}
               onChange={(e) => azurirajPolje("pol", e.target.value)}
             />
             Ne želim da iskažem
@@ -230,8 +230,8 @@ function App() {
             <input
               type="radio"
               name="osecajNakonPranja"
-              value="Zategnuto"
-              checked={formData.osecajNakonPranja === "Zategnuto"}
+              value="ZATEGNUTO"
+              checked={formData.osecajNakonPranja === "ZATEGNUTO"}
               onChange={(e) =>
                 azurirajPolje("osecajNakonPranja", e.target.value)
               }
@@ -243,8 +243,8 @@ function App() {
             <input
               type="radio"
               name="osecajNakonPranja"
-              value="Sjajno_T_zona"
-              checked={formData.osecajNakonPranja === "Sjajno_T_zona"}
+              value="SJAJNO_T_ZONA"
+              checked={formData.osecajNakonPranja === "SJAJNO_T_ZONA"}
               onChange={(e) =>
                 azurirajPolje("osecajNakonPranja", e.target.value)
               }
@@ -256,8 +256,8 @@ function App() {
             <input
               type="radio"
               name="osecajNakonPranja"
-              value="Sjajno_Celo"
-              checked={formData.osecajNakonPranja === "Sjajno_Celo"}
+              value="SJAJNO_CELO"
+              checked={formData.osecajNakonPranja === "SJAJNO_CELO"}
               onChange={(e) =>
                 azurirajPolje("osecajNakonPranja", e.target.value)
               }
@@ -269,8 +269,8 @@ function App() {
             <input
               type="radio"
               name="osecajNakonPranja"
-              value="Normalno"
-              checked={formData.osecajNakonPranja === "Normalno"}
+              value="NORMALNO"
+              checked={formData.osecajNakonPranja === "NORMALNO"}
               onChange={(e) =>
                 azurirajPolje("osecajNakonPranja", e.target.value)
               }
@@ -302,8 +302,8 @@ function App() {
           <label className="opcija">
             <input
               type="checkbox"
-              value="Akne"
-              checked={formData.glavniProblemi.includes("Akne")}
+              value="AKNE"
+              checked={formData.glavniProblemi.includes("AKNE")}
               onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
             />
             Akne
@@ -312,8 +312,8 @@ function App() {
           <label className="opcija">
             <input
               type="checkbox"
-              value="Bore"
-              checked={formData.glavniProblemi.includes("Bore")}
+              value="BORE"
+              checked={formData.glavniProblemi.includes("BORE")}
               onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
             />
             Bore
@@ -322,8 +322,8 @@ function App() {
           <label className="opcija">
             <input
               type="checkbox"
-              value="Fleke"
-              checked={formData.glavniProblemi.includes("Fleke")}
+              value="FLEKE"
+              checked={formData.glavniProblemi.includes("FLEKE")}
               onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
             />
             Fleke
@@ -332,8 +332,8 @@ function App() {
           <label className="opcija">
             <input
               type="checkbox"
-              value="Dehidratacija"
-              checked={formData.glavniProblemi.includes("Dehidratacija")}
+              value="DEHIDRATACIJA"
+              checked={formData.glavniProblemi.includes("DEHIDRATACIJA")}
               onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
             />
             Dehidratacija
@@ -342,8 +342,8 @@ function App() {
           <label className="opcija">
             <input
               type="checkbox"
-              value="Pore"
-              checked={formData.glavniProblemi.includes("Pore")}
+              value="PROSIRENE_PORE"
+              checked={formData.glavniProblemi.includes("PROSIRENE_PORE")}
               onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
             />
             Proširene pore
@@ -352,8 +352,8 @@ function App() {
           <label className="opcija">
             <input
               type="checkbox"
-              value="Nijedan"
-              checked={formData.glavniProblemi.includes("Nijedan")}
+              value="NIJEDAN"
+              checked={formData.glavniProblemi.includes("NIJEDAN")}
               onChange={(e) => promeniProblem(e.target.value, e.target.checked)}
             />
             Nijedan
@@ -382,8 +382,8 @@ function App() {
             <input
               type="radio"
               name="osetljivostKoze"
-              value="Sklona_iritacijama"
-              checked={formData.osetljivostKoze === "Sklona_iritacijama"}
+              value="SKLONA_IRITACIJAMA"
+              checked={formData.osetljivostKoze === "SKLONA_IRITACIJAMA"}
               onChange={(e) => azurirajPolje("osetljivostKoze", e.target.value)}
             />
             Sklona iritacijama i crvenilu
@@ -393,8 +393,8 @@ function App() {
             <input
               type="radio"
               name="osetljivostKoze"
-              value="Konstantno_perutanje"
-              checked={formData.osetljivostKoze === "Konstantno_perutanje"}
+              value="KONSTANTNO_PERUTANJE"
+              checked={formData.osetljivostKoze === "KONSTANTNO_PERUTANJE"}
               onChange={(e) => azurirajPolje("osetljivostKoze", e.target.value)}
             />
             Konstantno perutanje
@@ -404,8 +404,8 @@ function App() {
             <input
               type="radio"
               name="osetljivostKoze"
-              value="Normalna_otpornost"
-              checked={formData.osetljivostKoze === "Normalna_otpornost"}
+              value="NORMALNA_OTPORNOST"
+              checked={formData.osetljivostKoze === "NORMALNA_OTPORNOST"}
               onChange={(e) => azurirajPolje("osetljivostKoze", e.target.value)}
             />
             Normalna otpornost
@@ -479,8 +479,8 @@ function App() {
             <input
               type="radio"
               name="izlozenostSunca"
-              value="Uglavnom_u_zatvorenom"
-              checked={formData.izlozenostSunca === "Uglavnom_u_zatvorenom"}
+              value="UGLAVNOM_U_ZATVORENOM"
+              checked={formData.izlozenostSunca === "UGLAVNOM_U_ZATVORENOM"}
               onChange={(e) => azurirajPolje("izlozenostSunca", e.target.value)}
             />
             Uglavnom sam u zatvorenom prostoru
@@ -490,8 +490,8 @@ function App() {
             <input
               type="radio"
               name="izlozenostSunca"
-              value="Povremeno_na_otvorenom"
-              checked={formData.izlozenostSunca === "Povremeno_na_otvorenom"}
+              value="POVREMENO_NA_OTVORENOM"
+              checked={formData.izlozenostSunca === "POVREMENO_NA_OTVORENOM"}
               onChange={(e) => azurirajPolje("izlozenostSunca", e.target.value)}
             />
             Povremeno provodim vreme na otvorenom, prošetam
@@ -501,9 +501,9 @@ function App() {
             <input
               type="radio"
               name="izlozenostSunca"
-              value="Dosta_vremena_na_otvorenom"
+              value="DOSTA_VREMENA_NA_OTVORENOM"
               checked={
-                formData.izlozenostSunca === "Dosta_vremena_na_otvorenom"
+                formData.izlozenostSunca === "DoOSTA_VREMENA_NA_OTVORENOM"
               }
               onChange={(e) => azurirajPolje("izlozenostSunca", e.target.value)}
             />
@@ -590,12 +590,13 @@ function App() {
             7.1. Koje aktivne supstance ste koristili? (označite sve što važi)
           </h2>
           {[
-            "Retinol",
-            "Salicilna kiselina",
-            "Glikolna kiselina",
-            "Vitamin C",
-            "Niacinamid",
-            "Ceramidi",
+            "RETINOL",
+            "SALICILNA_KISELINA",
+            "GLIKOLNA_KISELINA",
+            "VITAMIN_C",
+            "NIACINAMID",
+            "CERAMIDI",
+            "AZELAICNA_KISELINA",
           ].map((sastojak) => (
             <div key={sastojak}>
               <label className="opcija">
@@ -634,8 +635,8 @@ function App() {
             <input
               type="radio"
               name="budzet"
-              value="Ekonomican"
-              checked={formData.budzet === "Ekonomican"}
+              value="EKONOMICAN"
+              checked={formData.budzet === "EKONOMICAN"}
               onChange={(e) => azurirajPolje("budzet", e.target.value)}
             />
             Ekonomičan
@@ -645,8 +646,8 @@ function App() {
             <input
               type="radio"
               name="budzet"
-              value="Srednji"
-              checked={formData.budzet === "Srednji"}
+              value="SREDNJI"
+              checked={formData.budzet === "SREDNJI"}
               onChange={(e) => azurirajPolje("budzet", e.target.value)}
             />
             Srednji
@@ -656,8 +657,8 @@ function App() {
             <input
               type="radio"
               name="budzet"
-              value="Premium"
-              checked={formData.budzet === "Premium"}
+              value="PREMIUM"
+              checked={formData.budzet === "PREMIUM"}
               onChange={(e) => azurirajPolje("budzet", e.target.value)}
             />
             Premium

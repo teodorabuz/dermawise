@@ -1,0 +1,7 @@
+package com.dermawise.backend;
+
+public enum Sastojak {
+	
+	RETINOL, SALICILNA_KISELINA, VITAMIN_C, GLIKOLNA_KISELINA, NIACINAMID, CERAMIDI, AZELAICNA_KISELINA
+
+}

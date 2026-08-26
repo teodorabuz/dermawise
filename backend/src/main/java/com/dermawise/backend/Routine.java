@@ -61,6 +61,8 @@ public class Routine {
     }
 
     public void dodajAktivnuSupstancu(String supstanca) {
-        this.aktivneSupstance.add(supstanca);
+    	if(!this.aktivneSupstance.contains(supstanca)) {
+    		this.aktivneSupstance.add(supstanca);
+    	}
     }
 }

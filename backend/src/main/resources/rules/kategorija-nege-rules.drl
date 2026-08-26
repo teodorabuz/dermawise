@@ -2,103 +2,65 @@ package com.dermawise.backend.rules
 
 import com.dermawise.backend.SkincareRequest
 import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.GlavniProblem
 
-rule "Kategorija - samo akne"
+rule "Kategorija - Akne"
 salience 90
 when
-    SkincareRequest(glavniProblemi contains "Akne", glavniProblemi excludes "Bore", glavniProblemi excludes "Fleke")
+    SkincareRequest(glavniProblemi contains GlavniProblem.AKNE)
     rezultat: SkincareResult()
 then
-    rezultat.setKategorijaNege("Akne");
+    rezultat.dodajKategorijuNege("Akne");
     update(rezultat);
 end
 
-rule "Kategorija - samo bore"
+rule "Kategorija - Bore"
 salience 90
 when
-    SkincareRequest(glavniProblemi contains "Bore", glavniProblemi excludes "Akne", glavniProblemi excludes "Fleke")
+    SkincareRequest(glavniProblemi contains GlavniProblem.BORE)
     rezultat: SkincareResult()
 then
-    rezultat.setKategorijaNege("Anti-Age");
+    rezultat.dodajKategorijuNege("AntiAge");
     update(rezultat);
 end
 
-rule "Kategorija - samo fleke"
+rule "Kategorija - Fleke"
 salience 90
 when
-    SkincareRequest(glavniProblemi contains "Fleke", glavniProblemi excludes "Akne", glavniProblemi excludes "Bore")
+    SkincareRequest(glavniProblemi contains GlavniProblem.FLEKE)
     rezultat: SkincareResult()
 then
-    rezultat.setKategorijaNege("Pigmentacija");
+    rezultat.dodajKategorijuNege("Pigmentacija");
     update(rezultat);
 end
 
-rule "Kategorija - akne i bore"
+
+rule "Kategorija - Nijedan"
 salience 90
 when
-    SkincareRequest(glavniProblemi contains "Akne", glavniProblemi contains "Bore", glavniProblemi excludes "Fleke")
+    SkincareRequest(glavniProblemi contains GlavniProblem.NIJEDAN)
     rezultat: SkincareResult()
 then
-    rezultat.setKategorijaNege("Akne_AntiAge");
+    rezultat.dodajKategorijuNege("Odrzavanje");
     update(rezultat);
 end
 
-rule "Kategorija - akne i fleke"
+rule "Kategorija - Prosirene pore (fallback na Akne ako nema drugog problema)"
 salience 90
 when
-    SkincareRequest(glavniProblemi contains "Akne", glavniProblemi contains "Fleke", glavniProblemi excludes "Bore")
+    SkincareRequest(glavniProblemi contains GlavniProblem.PROSIRENE_PORE, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE)
     rezultat: SkincareResult()
 then
-    rezultat.setKategorijaNege("Akne_Pigmentacija");
+    rezultat.dodajKategorijuNege("Akne");
     update(rezultat);
 end
 
-rule "Kategorija - bore i fleke"
+rule "Kategorija - Dehidratacija (fallback na Odrzavanje ako nema drugog problema)"
 salience 90
 when
-    SkincareRequest(glavniProblemi contains "Bore", glavniProblemi contains "Fleke", glavniProblemi excludes "Akne")
+    SkincareRequest(glavniProblemi contains GlavniProblem.DEHIDRATACIJA, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE, glavniProblemi excludes GlavniProblem.PROSIRENE_PORE)
     rezultat: SkincareResult()
 then
-    rezultat.setKategorijaNege("AntiAge_Pigmentacija");
-    update(rezultat);
-end
-
-rule "Kategorija - sve tri"
-salience 90
-when
-    SkincareRequest(glavniProblemi contains "Akne", glavniProblemi contains "Bore", glavniProblemi contains "Fleke")
-    rezultat: SkincareResult()
-then
-    rezultat.setKategorijaNege("Kompletna_Nega");
-    update(rezultat);
-end
-
-rule "Kategorija - nijedan problem"
-salience 90
-when
-    SkincareRequest(glavniProblemi contains "Nijedan")
-    rezultat: SkincareResult()
-then
-    rezultat.setKategorijaNege("Odrzavanje");
-    update(rezultat);
-end
-
-rule "Kategorija - samo prosirene pore (fallback na akne)"
-salience 90
-when
-    SkincareRequest(glavniProblemi contains "Prosirene_pore", glavniProblemi excludes "Akne", glavniProblemi excludes "Bore", glavniProblemi excludes "Fleke")
-    rezultat: SkincareResult()
-then
-    rezultat.setKategorijaNege("Akne");
-    update(rezultat);
-end
-
-rule "Kategorija - samo dehidratacija (fallback na odrzavanje)"
-salience 90
-when
-    SkincareRequest(glavniProblemi contains "Dehidratacija", glavniProblemi excludes "Akne", glavniProblemi excludes "Bore", glavniProblemi excludes "Fleke", glavniProblemi excludes "Prosirene_pore")
-    rezultat: SkincareResult()
-then
-    rezultat.setKategorijaNege("Odrzavanje");
+    rezultat.dodajKategorijuNege("Odrzavanje");
     update(rezultat);
 end

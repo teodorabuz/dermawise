@@ -5,15 +5,15 @@ import java.util.List;
 public class SkincareRequest {
 
     private int godine;
-    private String pol;
-    private String osecajNakonPranja;
-    private List<String> glavniProblemi;
-    private String osetljivostKoze;
-    private String budzet;
+    private Pol pol;
+    private OsecajNakonPranja osecajNakonPranja;
+    private List<GlavniProblem> glavniProblemi;
+    private OsetljivostKoze osetljivostKoze;
+    private Budzet budzet;
     private String trudnicaIliDojilja;
-    private String izlozenostSunca;
+    private IzlozenostSuncu izlozenostSunca;
     private String koristioAktivneSupstance;
-    private List<String> korisceniSastojci;
+    private List<Sastojak> korisceniSastojci;
 
     public SkincareRequest() {
     }
@@ -26,35 +26,35 @@ public class SkincareRequest {
         this.godine = godine;
     }
 
-    public String getOsecajNakonPranja() {
+    public OsecajNakonPranja getOsecajNakonPranja() {
         return osecajNakonPranja;
     }
 
-    public void setOsecajNakonPranja(String osecajNakonPranja) {
+    public void setOsecajNakonPranja(OsecajNakonPranja osecajNakonPranja) {
         this.osecajNakonPranja = osecajNakonPranja;
     }
 
-    public List<String> getGlavniProblemi() {
+    public List<GlavniProblem> getGlavniProblemi() {
         return glavniProblemi;
     }
 
-    public void setGlavniProblemi(List<String> glavniProblemi) {
+    public void setGlavniProblemi(List<GlavniProblem> glavniProblemi) {
         this.glavniProblemi = glavniProblemi;
     }
 
-    public String getOsetljivostKoze() {
+    public OsetljivostKoze getOsetljivostKoze() {
         return osetljivostKoze;
     }
 
-    public void setOsetljivostKoze(String osetljivostKoze) {
+    public void setOsetljivostKoze(OsetljivostKoze osetljivostKoze) {
         this.osetljivostKoze = osetljivostKoze;
     }
 
-    public String getBudzet() {
+    public Budzet getBudzet() {
         return budzet;
     }
 
-    public void setBudzet(String budzet) {
+    public void setBudzet(Budzet budzet) {
         this.budzet = budzet;
     }
 
@@ -66,11 +66,11 @@ public class SkincareRequest {
         this.trudnicaIliDojilja = trudnicaIliDojilja;
     }
 
-    public String getIzlozenostSunca() {
+    public IzlozenostSuncu getIzlozenostSunca() {
         return izlozenostSunca;
     }
 
-    public void setIzlozenostSunca(String izlozenostSunca) {
+    public void setIzlozenostSunca(IzlozenostSuncu izlozenostSunca) {
         this.izlozenostSunca = izlozenostSunca;
     }
 
@@ -82,19 +82,19 @@ public class SkincareRequest {
         this.koristioAktivneSupstance = koristioAktivneSupstance;
     }
 
-    public List<String> getKorisceniSastojci() {
+    public List<Sastojak> getKorisceniSastojci() {
         return korisceniSastojci;
     }
 
-    public void setKorisceniSastojci(List<String> korisceniSastojci) {
+    public void setKorisceniSastojci(List<Sastojak> korisceniSastojci) {
         this.korisceniSastojci = korisceniSastojci;
     }
 
-	public String getPol() {
+	public Pol getPol() {
 		return pol;
 	}
 
-	public void setPol(String pol) {
+	public void setPol(Pol pol) {
 		this.pol = pol;
 	}
     

@@ -5,27 +5,33 @@ import java.util.List;
 
 public class SkincareResult {
 
-    private String tipKoze;
-    private String kategorijaNege;
+    private TipKoze tipKoze;
+    private List<String> kategorijaNege = new ArrayList<>();
     private Routine jutarnjaRutina = new Routine();
     private Routine vecernjaRutina = new Routine();
     private Dodaci dodaciRutini = new Dodaci();
     private List<String> upozorenja = new ArrayList<>();
 
-    public String getTipKoze() {
+    public TipKoze getTipKoze() {
         return tipKoze;
     }
 
-    public void setTipKoze(String tipKoze) {
+    public void setTipKoze(TipKoze tipKoze) {
         this.tipKoze = tipKoze;
     }
     
-    public String getKategorijaNege() {
+    public List<String> getKategorijaNege() {
 		return kategorijaNege;
 	}
 
-	public void setKategorijaNege(String kategorijaNege) {
+	public void setKategorijaNege(List<String> kategorijaNege) {
 		this.kategorijaNege = kategorijaNege;
+	}
+	
+	public void dodajKategorijuNege(String kategorija) {
+	    if (!this.kategorijaNege.contains(kategorija)) {
+	        this.kategorijaNege.add(kategorija);
+	    }
 	}
 
 	public Routine getJutarnjaRutina() {

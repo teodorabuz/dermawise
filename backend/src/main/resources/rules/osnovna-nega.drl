@@ -2,12 +2,14 @@ package com.dermawise.backend.rules
 
 import com.dermawise.backend.SkincareRequest
 import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.Budzet
+import com.dermawise.backend.TipKoze
 
 rule "Masna koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Ekonomican")
-    rezultat: SkincareResult(tipKoze == "Masna")
+	SkincareRequest(budzet == Budzet.EKONOMICAN)
+    rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("alverde NATURKOSMETIK HYDRO gel za umivanje lica - morske alge, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("alverde NATURKOSMETIK HYDRO gel za umivanje lica - morske alge, 150 ml");
@@ -21,8 +23,8 @@ end
 rule "Masna koža, srednji budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Srednji")
-    rezultat: SkincareResult(tipKoze == "Masna")
+	SkincareRequest(budzet == Budzet.SREDNJI)
+    rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("CeraVe Foaming Cleanser (Gel za čišćenje lica), 236 ml");
 	rezultat.getVecernjaRutina().setUmivalica("CeraVe Foaming Cleanser (Gel za čišćenje lica), 236 ml");
@@ -36,8 +38,8 @@ end
 rule "Masna koža, premium budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Premium")
-    rezultat: SkincareResult(tipKoze == "Masna")
+	SkincareRequest(budzet == Budzet.PREMIUM)
+    rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
@@ -51,8 +53,8 @@ end
 rule "Suva koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Ekonomican")
-    rezultat: SkincareResult(tipKoze == "Suva")
+	SkincareRequest(budzet == Budzet.EKONOMICAN)
+    rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Balea Rich Gel za umivanje, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Balea Rich Gel za umivanje, 150 ml");
@@ -66,8 +68,8 @@ end
 rule "Suva koža, srednji budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Srednji")
-    rezultat: SkincareResult(tipKoze == "Suva")
+	SkincareRequest(budzet == Budzet.SREDNJI)
+    rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Gorsen Face clean pena za čišćenje lica, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Gorsen Face clean pena za čišćenje lica, 150 ml");
@@ -81,8 +83,8 @@ end
 rule "Suva koža, premium budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Premium")
-    rezultat: SkincareResult(tipKoze == "Suva")
+	SkincareRequest(budzet == Budzet.PREMIUM)
+    rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Caudalie Vinosource-Hydra Moisturizing Cleansing Cream, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Caudalie Vinosource-Hydra Moisturizing Cleansing Cream, 150 ml");
@@ -96,8 +98,8 @@ end
 rule "Kombinovana koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Ekonomican")
-    rezultat: SkincareResult(tipKoze == "Kombinovana")
+	SkincareRequest(budzet == Budzet.EKONOMICAN)
+    rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Balea Balance Gel za umivanje, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Balea Balance Gel za umivanje, 150 ml");
@@ -111,8 +113,8 @@ end
 rule "Kombinovana koža, srednji budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Srednji")
-    rezultat: SkincareResult(tipKoze == "Kombinovana")
+	SkincareRequest(budzet == Budzet.SREDNJI)
+    rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("CeraVe Hydrating Cleanser (Gel-krema za čišćenje), 236 ml");
 	rezultat.getVecernjaRutina().setUmivalica("CeraVe Hydrating Cleanser (Gel-krema za čišćenje), 236 ml");
@@ -126,8 +128,8 @@ end
 rule "Kombinovana koža, premium budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Premium")
-    rezultat: SkincareResult(tipKoze == "Kombinovana")
+	SkincareRequest(budzet == Budzet.PREMIUM)
+    rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Caudalie Vinopure Purifying Cleansing Gel, 150 ml");
@@ -141,8 +143,8 @@ end
 rule "Normalna koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Ekonomican")
-    rezultat: SkincareResult(tipKoze == "Normalna")
+	SkincareRequest(budzet == Budzet.EKONOMICAN)
+    rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Balea Natural Beauty Gel za umivanje sa organskim ekstraktom, 150 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Balea Natural Beauty Gel za umivanje sa organskim ekstraktom, 150 ml");
@@ -156,8 +158,8 @@ end
 rule "Normalna koža, srednji budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Srednji")
-    rezultat: SkincareResult(tipKoze == "Normalna")
+	SkincareRequest(budzet == Budzet.SREDNJI)
+    rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Bioderma Sensibio Gel moussant, 200 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Bioderma Sensibio Gel moussant, 200 ml");
@@ -171,8 +173,8 @@ end
 rule "Normalna koža, premium budžet - umivalica, toner i krema"
 salience 80
 when
-	SkincareRequest(budzet == "Premium")
-    rezultat: SkincareResult(tipKoze == "Normalna")
+	SkincareRequest(budzet == Budzet.PREMIUM)
+    rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
 then
 	rezultat.getJutarnjaRutina().setUmivalica("Clarins Soothing Gentle Foaming Cleanser, 125 ml");
 	rezultat.getVecernjaRutina().setUmivalica("Clarins Soothing Gentle Foaming Cleanser, 125 ml");
