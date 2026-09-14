@@ -1,0 +1,84 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.Budzet
+import com.dermawise.backend.Sastojak
+
+rule "Godine - preventivni retinol, ekonomican budzet"
+salience 66
+no-loop true
+when
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge")
+then
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
+		rezultat.getVecernjaRutina().dodajSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
+	}
+	else{
+		rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Collagen Retinol serum za lice, 30 ml");
+	}
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
+	update(rezultat);
+end
+
+rule "Godine - preventivni retinol, srednji budzet"
+salience 66
+no-loop true
+when
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge")
+then
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
+		rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
+	}
+	else{
+		rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.05, 30 ml");
+	}
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
+	update(rezultat);
+end
+
+rule "Godine - preventivni retinol, premium budzet"
+salience 66
+no-loop true
+when
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge")
+then
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
+		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
+	}
+	else{
+		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 0.3% Retinol + 2% Bakuchiol Treatment, 30 ml");
+	}
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
+	update(rezultat);
+end
+
+rule "Godine - napomena kada su akne prioritet"
+salience 66
+no-loop true
+when
+	SkincareRequest(godine > 25)
+	rezultat: SkincareResult(kategorijaNege contains "Akne")
+then
+	rezultat.dodajNapomenu("S obzirom na vaše godine, preventivna upotreba retinola bi bila korisna. Preporučuje se da se prvo reši problem akni, a zatim uvede retinol u večernju rutinu.");
+end
+
+rule "Godine - napomena kada je pigmentacija prioritet"
+salience 66
+no-loop true
+when
+	SkincareRequest(godine > 25)
+	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
+then
+	rezultat.dodajNapomenu("S obzirom na vaše godine, preventivna upotreba retinola bi bila korisna. Trenutna večernja rutina koristi tretman za pigmentaciju - retinol možete uvesti nakon završetka tog tretmana ili alternirati večerima.");
+end
+
+
+
+
+
+
+
