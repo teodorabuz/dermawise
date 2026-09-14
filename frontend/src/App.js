@@ -596,7 +596,6 @@ function App() {
             "VITAMIN_C",
             "NIACINAMID",
             "CERAMIDI",
-            "AZELAICNA_KISELINA",
           ].map((sastojak) => (
             <div key={sastojak}>
               <label className="opcija">
@@ -768,6 +767,17 @@ function App() {
                     <strong>Uputstvo:</strong>{" "}
                     {rezultat.dodaciRutini.uputstvo || "-"}
                   </p>
+                </div>
+              )}
+
+              {rezultat.napomene && rezultat.napomene.length > 0 && (
+                <div className="rezultat-sekcija">
+                  <h3>Napomene</h3>
+                  <ul>
+                    {rezultat.napomene.map((n, i) => (
+                      <li key={i}>{n}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
 

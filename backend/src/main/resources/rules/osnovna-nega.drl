@@ -7,6 +7,7 @@ import com.dermawise.backend.TipKoze
 
 rule "Masna koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
     rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -22,6 +23,7 @@ end
 
 rule "Masna koža, srednji budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
     rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -37,6 +39,7 @@ end
 
 rule "Masna koža, premium budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)
     rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -52,6 +55,7 @@ end
 
 rule "Suva koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
     rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -67,6 +71,7 @@ end
 
 rule "Suva koža, srednji budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
     rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -82,6 +87,7 @@ end
 
 rule "Suva koža, premium budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)
     rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -97,6 +103,7 @@ end
 
 rule "Kombinovana koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
     rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -112,6 +119,7 @@ end
 
 rule "Kombinovana koža, srednji budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
     rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -127,6 +135,7 @@ end
 
 rule "Kombinovana koža, premium budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)
     rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -142,6 +151,7 @@ end
 
 rule "Normalna koža, ekonomičan budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
     rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -157,6 +167,7 @@ end
 
 rule "Normalna koža, srednji budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
     rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -172,6 +183,7 @@ end
 
 rule "Normalna koža, premium budžet - umivalica, toner i krema"
 salience 80
+no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)
     rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)

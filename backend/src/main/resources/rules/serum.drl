@@ -6,16 +6,17 @@ import com.dermawise.backend.Budzet
 import com.dermawise.backend.Sastojak
 
 rule "Akne - ekonomičan budžet"
-salience 80
+salience 75
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
     rezultat: SkincareResult(kategorijaNege contains "Akne")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.NIACINAMID)){
-		rezultat.getJutarnjaRutina().setSerum("Revox B77 Just Niacinamide 10%, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Revox B77 Just Niacinamide 10%, 30 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Balea Anti-Pickel Serum, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Balea Anti-Pickel Serum, 30 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Niacinamid");
 	
@@ -30,16 +31,17 @@ then
 end
 
 rule "Akne - srednji budžet"
-salience 80
+salience 75
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
     rezultat: SkincareResult(kategorijaNege contains "Akne")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.NIACINAMID)){
-		rezultat.getJutarnjaRutina().setSerum("Vichy Liftactiv B3 Serum, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Vichy Liftactiv B3 Serum, 30 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("The Ordinary Niacinamide 5% Emulsion, 100 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("The Ordinary Niacinamide 5% Emulsion, 100 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Niacinamid");
 	
@@ -54,16 +56,17 @@ then
 end
 
 rule "Akne - premium budžet"
-salience 80
+salience 75
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
     rezultat: SkincareResult(kategorijaNege contains "Akne")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.NIACINAMID)){
-		rezultat.getJutarnjaRutina().setSerum("Paula's Choice 10% Niacinamide Booster, 20 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Paula's Choice 10% Niacinamide Booster, 20 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Paula's Choice Calm Repairing Serum, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Paula's Choice Calm Repairing Serum, 30 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Niacinamid");
 	
@@ -78,72 +81,75 @@ then
 end
 
 rule "Bore - ekonomičan budžet"
-salience 80
+salience 77
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.VITAMIN_C)){
-		rezultat.getJutarnjaRutina().setSerum("Revox B77 Just Vitamin C 20%, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Revox B77 Just Vitamin C 20%, 30 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Balea VITAMIN C serum za lice, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Balea VITAMIN C serum za lice, 30 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Vitamin C");
 	
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
-		rezultat.getVecernjaRutina().setSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
 	}
 	else{
-		rezultat.getVecernjaRutina().setSerum("Balea Beauty Collagen Retinol serum za lice, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Collagen Retinol serum za lice, 30 ml");
 	}
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Bore - srednji budžet"
-salience 80
+salience 77
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.VITAMIN_C)){
-		rezultat.getJutarnjaRutina().setSerum("Geek & Gorgeous C-Glow, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Geek & Gorgeous C-Glow, 30 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Q+A Vitamin C Brightening Serum, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Q+A Vitamin C Brightening Serum, 30 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Vitamin C");
 	
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
-		rezultat.getVecernjaRutina().setSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
 	}
 	else{
-		rezultat.getVecernjaRutina().setSerum("Geek & Gorgeous A-Game 0.05, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.05, 30 ml");
 	}
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Bore - premium budžet"
-salience 80
+salience 77
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.VITAMIN_C)){
-		rezultat.getJutarnjaRutina().setSerum("Paula's Choice C25 Super Booster, 15 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Paula's Choice C25 Super Booster, 15 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Paula's Choice C15 Super Booster, 20 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Paula's Choice C15 Super Booster, 20 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Vitamin C");
 	
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
-		rezultat.getVecernjaRutina().setSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
 	}
 	else{
-		rezultat.getVecernjaRutina().setSerum("Paula's Choice 0.3% Retinol + 2% Bakuchiol Treatment, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 0.3% Retinol + 2% Bakuchiol Treatment, 30 ml");
 	}
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
@@ -151,72 +157,129 @@ end
 
 rule "Fleke - ekonomičan budžet"
 salience 80
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
     rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.VITAMIN_C)){
-		rezultat.getJutarnjaRutina().setSerum("Revox B77 Just Vitamin C 20%, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Revox B77 Just Vitamin C 20%, 30 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Balea VITAMIN C serum za lice, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Balea VITAMIN C serum za lice, 30 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Vitamin C");
 	
-	if(zahtev.getKorisceniSastojci().contains(Sastojak.AZELAICNA_KISELINA)){
-		rezultat.getVecernjaRutina().setSerum("Revox B77 Just Azelaic Acid 10%, 30 ml");
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.GLIKOLNA_KISELINA)){
+		rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Expert Serum sa 10% glikolne kiseline, 30 ml");
 	}
 	else{
-		rezultat.getVecernjaRutina().setSerum("Balea Beauty Expert Peeling Serum sa 3% azelaične kiseline, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Expert 5% Glycolic Acid Tonik, 125 ml");
 	}
-	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Azelaična kiselina");
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Glikolna kiselina");
 	update(rezultat);
 end
 
 rule "Fleke - srednji budžet"
 salience 80
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
     rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.VITAMIN_C)){
-		rezultat.getJutarnjaRutina().setSerum("Geek & Gorgeous C-Glow, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Geek & Gorgeous C-Glow, 30 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Q+A Vitamin C Brightening Serum, 30 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Q+A Vitamin C Brightening Serum, 30 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Vitamin C");
 	
-	if(zahtev.getKorisceniSastojci().contains(Sastojak.AZELAICNA_KISELINA)){
-		rezultat.getVecernjaRutina().setSerum("The Ordinary Azelaic Acid Suspension 10%, 30 ml");
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.GLIKOLNA_KISELINA)){
+		rezultat.getVecernjaRutina().dodajSerum("Bielenda Professional Exfoliating Face Serum with 10% Glycolic Acid, 30 ml");
 	}
 	else{
-		rezultat.getVecernjaRutina().setSerum("Q+A Azelaic Acid Balancing Serum, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("The Ordinary Glycolic Acid 7% Toning Solution, 30 ml");
 	}
-	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Azelaična kiselina");
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Glikolna kiselina");
 	update(rezultat);
 end
 
 rule "Fleke - premium budžet"
 salience 80
+no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
     rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.VITAMIN_C)){
-		rezultat.getJutarnjaRutina().setSerum("Paula's Choice C25 Super Booster, 15 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Paula's Choice C25 Super Booster, 15 ml");
 	}
 	else{
-		rezultat.getJutarnjaRutina().setSerum("Paula's Choice C15 Super Booster, 20 ml");
+		rezultat.getJutarnjaRutina().dodajSerum("Paula's Choice C15 Super Booster, 20 ml");
 	}
 	rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Vitamin C");
 	
-	if(zahtev.getKorisceniSastojci().contains(Sastojak.AZELAICNA_KISELINA)){
-		rezultat.getVecernjaRutina().setSerum("Paula's Choice 10% Azelaic Acid Booster, 30 ml");
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.GLIKOLNA_KISELINA)){
+		rezultat.getVecernjaRutina().dodajSerum("Drunk Elephant T.L.C. Framboos Glycolic Night Serum, 30 ml");
 	}
 	else{
-		rezultat.getVecernjaRutina().setSerum("Paula's Choice Calm Redness Relief Repairing Serum, 30 ml");
+		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice Skin Perfecting 8% AHA Gel Exfoliant, 30 ml");
 	}
-	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Azelaična kiselina");
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Glikolna kiselina");
+	update(rezultat);
+end
+
+rule "Nijedan - ekonomičan budžet"
+salience 80
+no-loop true
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje")
+then
+	rezultat.getJutarnjaRutina().dodajSerum("Balea Beauty Hyaluron Serum za lice, 30 ml");
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.CERAMIDI)){
+		rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Expert Umirujući serum za lice, 30 ml");
+	}
+	else{
+		rezultat.getVecernjaRutina().dodajSerum("Balea Natural Beauty Serum za lice, 30 ml");
+	}
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Ceramidi");
+	update(rezultat);
+end
+
+rule "Nijedan - srednji budžet"
+salience 80
+no-loop true
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje")
+then
+	rezultat.getJutarnjaRutina().dodajSerum("The Ordinary Hyaluronic Acid 2% + B5, 30 ml");
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.CERAMIDI)){
+		rezultat.getVecernjaRutina().dodajSerum("The Ordinary Soothing & Barrier Support Serum, 30 ml");
+	}
+	else{
+		rezultat.getVecernjaRutina().dodajSerum("Q+A Ceramide Barrier Defense Face Serum, 50 ml");
+	}
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Ceramidi");
+	update(rezultat);
+end
+
+rule "Nijedan - premium budžet"
+salience 80
+no-loop true
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje")
+then
+	rezultat.getJutarnjaRutina().dodajSerum("Vichy Mineral 89 Fortifying and Plumping Daily Booster, 50 ml");
+	if(zahtev.getKorisceniSastojci().contains(Sastojak.CERAMIDI)){
+		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice Omega+ Complex Serum, 30 ml");
+	}
+	else{
+		rezultat.getVecernjaRutina().dodajSerum("Kiehl's Vital Skin-Strengthening Super Serum, 30 ml");
+	}
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Ceramidi");
 	update(rezultat);
 end

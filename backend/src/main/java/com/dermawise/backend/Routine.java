@@ -36,6 +36,14 @@ public class Routine {
         this.serum = serum;
     }
 
+    public void dodajSerum(String noviSerum) {
+        if (this.serum == null || this.serum.isEmpty()) {
+            this.serum = noviSerum;
+        } else if (!this.serum.contains(noviSerum)) {
+            this.serum = this.serum + " + " + noviSerum;
+        }
+    }
+    
     public String getKrema() {
         return krema;
     }

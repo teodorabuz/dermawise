@@ -1,0 +1,79 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.OsetljivostKoze
+
+rule "Sklona iritacijama + Retinol"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
+	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Retinol")
+then
+	rezultat.dodajUpozorenje("Zbog kože sklonoj iritacijama, preporuka je da retinol ne koristite češće od 1-2 puta nedeljno i u počnite sa nižim koncentracijama (npr. 0.01% - 0.03%).");
+end
+
+rule "Sklona iritacijama + Salicina kiselina"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
+	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Salicilna kiselina")
+then
+	rezultat.dodajUpozorenje("Zbog kože sklonoj iritacijama, preporuka je da salicilnu kiselinu ne koristite češće od 1-2 puta nedeljno i u počnite sa nižom koncentracijom.");
+end
+
+rule "Sklona iritacijama + Glikolna kiselina"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
+	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Glikolna kiselina")
+then
+	rezultat.dodajUpozorenje("Zbog kože sklonoj iritacijama, preporuka je da glikolnu kiselinu ne koristite češće od 1-2 puta nedeljno i u počnite sa nižom koncentracijom.");
+end
+
+rule "Sklona iritacijama + Vitamin C"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
+	rezultat: SkincareResult(jutarnjaRutina.aktivneSupstance contains "Vitamin C")
+then
+	rezultat.dodajUpozorenje("Zbog kože sklonoj iritacijama, preporuka je da vitamin C koristite u nižim koncentracijama (npr. 5-10%) i koristite ga svaki drugi/treći dan dok koža ne razvije toleranciju.");
+end
+
+rule "Konstantno perutanje + Retinol"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
+	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Retinol")
+then
+	rezultat.dodajUpozorenje("Zbog kože koja se konstantno peruta (to je znak oštećene barijere kože), preporuka je da retinol ne koristite dok se stanje kože ne stabilizuje kroz hidrataciju. Konsultovati se sa dermatologom pre nego što ga uvrstite u svoju rutinu.");
+end
+
+rule "Konstantno perutanje + Salicilna kiselina"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
+	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Salicilna kiselina")
+then
+	rezultat.dodajUpozorenje("Zbog kože koja se konstantno peruta (to je znak oštećene barijere kože), preporuka je da salicilnu kiselinu ne koristite dok se stanje kože ne stabilizuje kroz hidrataciju. Konsultovati se sa dermatologom pre nego što ga uvrstite u svoju rutinu.");
+end
+
+rule "Konstantno perutanje + Glikolna kiselina"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
+	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Glikolna kiselina")
+then
+	rezultat.dodajUpozorenje("Zbog kože koja se konstantno peruta (to je znak oštećene barijere kože), preporuka je da glikolnu kiselinu ne koristite dok se stanje kože ne stabilizuje kroz hidrataciju. Konsultovati se sa dermatologom pre nego što ga uvrstite u svoju rutinu.");
+end
+
+rule "Konstantno perutanje + Vitamin C"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
+	rezultat: SkincareResult(jutarnjaRutina.aktivneSupstance contains "Vitamin C")
+then
+	rezultat.dodajUpozorenje("Zbog kože koja se konstantno peruta (to je znak oštećene barijere kože), preporuka je da retinol ne koristite dok se stanje kože ne stabilizuje kroz hidrataciju.");
+end
+
+

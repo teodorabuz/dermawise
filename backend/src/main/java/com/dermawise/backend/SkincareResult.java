@@ -11,6 +11,7 @@ public class SkincareResult {
     private Routine vecernjaRutina = new Routine();
     private Dodaci dodaciRutini = new Dodaci();
     private List<String> upozorenja = new ArrayList<>();
+    private List<String> napomene = new ArrayList<>();
 
     public TipKoze getTipKoze() {
         return tipKoze;
@@ -68,5 +69,17 @@ public class SkincareResult {
 
     public void dodajUpozorenje(String tekst) {
         this.upozorenja.add(tekst);
+    }
+    
+    public List<String> getNapomene() {
+        return napomene;
+    }
+
+    public void setNapomene(List<String> napomene) {
+        this.napomene = napomene;
+    }
+
+    public void dodajNapomenu(String tekst) {
+        this.napomene.add(tekst);
     }
 }
