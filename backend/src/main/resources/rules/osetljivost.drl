@@ -73,7 +73,30 @@ when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
 	rezultat: SkincareResult(jutarnjaRutina.aktivneSupstance contains "Vitamin C")
 then
-	rezultat.dodajUpozorenje("Zbog kože koja se konstantno peruta (to je znak oštećene barijere kože), preporuka je da retinol ne koristite dok se stanje kože ne stabilizuje kroz hidrataciju.");
+	rezultat.dodajUpozorenje("Zbog kože koja se konstantno peruta (to je znak oštećene barijere kože), preporuka je da vitamin C ne koristite dok se stanje kože ne stabilizuje kroz hidrataciju.");
 end
 
+rule "Osetljivost - konstantno perutanje, uklanjanje dodataka"
+salience 54
+when
+    zahtev: SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
+    rezultat: SkincareResult()
+then
+    rezultat.getDodaciRutini().setEsencija(null);
+    rezultat.getDodaciRutini().setMaska(null);
+    rezultat.getDodaciRutini().setAmpule(null);
+    rezultat.getDodaciRutini().setUputstvo("Zbog trenutnog stanja kože (konstantno perutanje), dodatni koraci u nezi (esencija, maska, ampule) su privremeno izostavljeni. Fokusirajte se na osnovnu rutinu i hidrataciju dok se stanje kože ne stabilizuje.");
+	rezultat.dodajUpozorenje("Zbog konstantnog perutanja kože (znak oštećene kožne barijere), dodatni koraci u nezi (esencija, maska, ampule) su privremeno izostavljeni dok se stanje kože ne stabilizuje.");
+end
 
+rule "Osetljivost - sklona iritacijama, samo maska"
+salience 54
+when
+    zahtev: SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
+    rezultat: SkincareResult()
+then
+    rezultat.getDodaciRutini().setEsencija(null);
+    rezultat.getDodaciRutini().setAmpule(null);
+    rezultat.getDodaciRutini().setUputstvo("Zbog trenutnog stanja kože (koža koja je sklona iritacijama i crvenilu), dodatni koraci u nezi (esencija i ampule) su privremeno izostavljeni. Fokusirajte se na osnovnu rutinu i hidrataciju dok se stanje kože ne stabilizuje, a u međuvremenu do 2-3 puta nedeljno stavljajte preporučenu masku za lice.");
+    rezultat.dodajUpozorenje("Zbog sklonosti ka iritacijama i crvenilu, preporučuje se koristiti samo masku iz preporučene rutine, dok se esencija i ampule privremeno izostavljaju kako bi se smanjio rizik od dodatne iritacije.");
+end

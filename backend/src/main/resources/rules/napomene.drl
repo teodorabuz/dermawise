@@ -22,7 +22,7 @@ end
 rule "Napomena - AntiAge i Pigmentacija zajedno"
 salience 60
 when
-    rezultat: SkincareResult(kategorijaNege contains "AntiAge", kategorijaNege contains "Pigmentacija")
+    rezultat: SkincareResult(kategorijaNege contains "AntiAge", kategorijaNege contains "Pigmentacija", kategorijaNege excludes "Akne")
 then
     rezultat.dodajNapomenu("Retinol i glikolna kiselina se ne preporučuju zajedno uveče zbog povećanog rizika od iritacije. Trenutna večernja rutina koristi retinol za anti-age negu. Za dodatnu negu pigmentacije, glikolnu kiselinu mozete koristiti odvojenim večerima ili nakon konsultacije sa dermatologom.");
 end

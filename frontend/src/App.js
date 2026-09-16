@@ -503,7 +503,7 @@ function App() {
               name="izlozenostSunca"
               value="DOSTA_VREMENA_NA_OTVORENOM"
               checked={
-                formData.izlozenostSunca === "DoOSTA_VREMENA_NA_OTVORENOM"
+                formData.izlozenostSunca === "DOSTA_VREMENA_NA_OTVORENOM"
               }
               onChange={(e) => azurirajPolje("izlozenostSunca", e.target.value)}
             />

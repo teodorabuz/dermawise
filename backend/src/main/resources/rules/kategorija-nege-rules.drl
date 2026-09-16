@@ -9,7 +9,7 @@ salience 90
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.AKNE)
-    rezultat: SkincareResult()
+    rezultat: SkincareResult(kategorijaNege excludes "Akne")
 then
     rezultat.dodajKategorijuNege("Akne");
     update(rezultat);
@@ -20,7 +20,7 @@ salience 90
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.BORE)
-    rezultat: SkincareResult()
+    rezultat: SkincareResult(kategorijaNege excludes "AntiAge")
 then
     rezultat.dodajKategorijuNege("AntiAge");
     update(rezultat);
@@ -31,7 +31,7 @@ salience 90
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.FLEKE)
-    rezultat: SkincareResult()
+    rezultat: SkincareResult(kategorijaNege excludes "Pigmentacija")
 then
     rezultat.dodajKategorijuNege("Pigmentacija");
     update(rezultat);
@@ -43,7 +43,7 @@ salience 90
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.NIJEDAN)
-    rezultat: SkincareResult()
+    rezultat: SkincareResult(kategorijaNege excludes "Odrzavanje")
 then
     rezultat.dodajKategorijuNege("Odrzavanje");
     update(rezultat);
@@ -54,7 +54,7 @@ salience 90
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.PROSIRENE_PORE, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE)
-    rezultat: SkincareResult()
+    rezultat: SkincareResult(kategorijaNege excludes "Akne")
 then
     rezultat.dodajKategorijuNege("Akne");
     update(rezultat);
@@ -65,7 +65,7 @@ salience 90
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.DEHIDRATACIJA, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE, glavniProblemi excludes GlavniProblem.PROSIRENE_PORE)
-    rezultat: SkincareResult()
+    rezultat: SkincareResult(kategorijaNege excludes "Odrzavanje")
 then
     rezultat.dodajKategorijuNege("Odrzavanje");
     update(rezultat);

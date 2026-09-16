@@ -10,7 +10,7 @@ salience 66
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.EKONOMICAN)
-	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge")
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
 		rezultat.getVecernjaRutina().dodajSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
@@ -27,7 +27,7 @@ salience 66
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.SREDNJI)
-	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge")
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
 		rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
@@ -44,7 +44,7 @@ salience 66
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.PREMIUM)
-	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge")
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
 	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
 		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
@@ -71,7 +71,7 @@ salience 66
 no-loop true
 when
 	SkincareRequest(godine > 25)
-	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
+	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", kategorijaNege excludes "Akne")
 then
 	rezultat.dodajNapomenu("S obzirom na vaše godine, preventivna upotreba retinola bi bila korisna. Trenutna večernja rutina koristi tretman za pigmentaciju - retinol možete uvesti nakon završetka tog tretmana ili alternirati večerima.");
 end

@@ -1,0 +1,19 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+
+rule "Trudnoca - potpuno praznjenje aktivnih supstanci"
+salience 0
+when
+    SkincareRequest(trudnicaIliDojilja == "Da")
+    rezultat: SkincareResult()
+then
+    rezultat.getJutarnjaRutina().getAktivneSupstance().clear();
+    rezultat.getVecernjaRutina().getAktivneSupstance().clear();
+    rezultat.getJutarnjaRutina().setSerum("Bezbedan serum za trudnice i dojilje - hijaluronska kiselina i niacinamid (bez retinola, kiselina i etarskih ulja)");
+    rezultat.getVecernjaRutina().setSerum("Bezbedan serum za trudnice i dojilje - hijaluronska kiselina i niacinamid (bez retinola, kiselina i etarskih ulja)");
+    rezultat.getUpozorenja().clear();
+    rezultat.dodajUpozorenje("Zbog trudnoce/dojenja, sve agresivne aktivne supstance (retinol, salicilna kiselina, glikolna kiselina, azelainska kiselina) su uklonjene iz rutine. Preporucuju se samo bezbedni sastojci kao hijaluronska kiselina, niacinamid i ceramidi. Obavezno se konsultujte sa ginekologom/dermatologom pre uvodjenja bilo kog novog proizvoda.");
+end
+

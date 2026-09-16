@@ -11,7 +11,7 @@ public class SkincareRequest {
     private OsetljivostKoze osetljivostKoze;
     private Budzet budzet;
     private String trudnicaIliDojilja;
-    private IzlozenostSuncu izlozenostSunca;
+    private IzlozenostSuncu izlozenostSuncu;
     private String koristioAktivneSupstance;
     private List<Sastojak> korisceniSastojci;
 
@@ -66,12 +66,12 @@ public class SkincareRequest {
         this.trudnicaIliDojilja = trudnicaIliDojilja;
     }
 
-    public IzlozenostSuncu getIzlozenostSunca() {
-        return izlozenostSunca;
+    public IzlozenostSuncu getIzlozenostSuncu() {
+        return izlozenostSuncu;
     }
 
-    public void setIzlozenostSunca(IzlozenostSuncu izlozenostSunca) {
-        this.izlozenostSunca = izlozenostSunca;
+    public void setIzlozenostSunca(IzlozenostSuncu izlozenostSuncu) {
+        this.izlozenostSuncu = izlozenostSuncu;
     }
 
     public String getKoristioAktivneSupstance() {
