@@ -5,7 +5,7 @@ import com.dermawise.backend.SkincareResult
 import com.dermawise.backend.GlavniProblem
 
 rule "Kategorija - Akne"
-salience 90
+salience 95
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.AKNE)
@@ -16,7 +16,7 @@ then
 end
 
 rule "Kategorija - Bore"
-salience 90
+salience 95
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.BORE)
@@ -27,7 +27,7 @@ then
 end
 
 rule "Kategorija - Fleke"
-salience 90
+salience 95
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.FLEKE)
@@ -39,7 +39,7 @@ end
 
 
 rule "Kategorija - Nijedan"
-salience 90
+salience 95
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.NIJEDAN)
@@ -50,7 +50,7 @@ then
 end
 
 rule "Kategorija - Prosirene pore (fallback na Akne ako nema drugog problema)"
-salience 90
+salience 95
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.PROSIRENE_PORE, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE)
@@ -61,7 +61,7 @@ then
 end
 
 rule "Kategorija - Dehidratacija (fallback na Odrzavanje ako nema drugog problema)"
-salience 90
+salience 95
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.DEHIDRATACIJA, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE, glavniProblemi excludes GlavniProblem.PROSIRENE_PORE)

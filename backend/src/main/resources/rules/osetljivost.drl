@@ -5,7 +5,7 @@ import com.dermawise.backend.SkincareResult
 import com.dermawise.backend.OsetljivostKoze
 
 rule "Sklona iritacijama + Retinol"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
 	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Retinol")
@@ -14,7 +14,7 @@ then
 end
 
 rule "Sklona iritacijama + Salicina kiselina"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
 	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Salicilna kiselina")
@@ -23,7 +23,7 @@ then
 end
 
 rule "Sklona iritacijama + Glikolna kiselina"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
 	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Glikolna kiselina")
@@ -32,7 +32,7 @@ then
 end
 
 rule "Sklona iritacijama + Vitamin C"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
 	rezultat: SkincareResult(jutarnjaRutina.aktivneSupstance contains "Vitamin C")
@@ -41,7 +41,7 @@ then
 end
 
 rule "Konstantno perutanje + Retinol"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
 	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Retinol")
@@ -50,7 +50,7 @@ then
 end
 
 rule "Konstantno perutanje + Salicilna kiselina"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
 	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Salicilna kiselina")
@@ -59,7 +59,7 @@ then
 end
 
 rule "Konstantno perutanje + Glikolna kiselina"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
 	rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Glikolna kiselina")
@@ -68,7 +68,7 @@ then
 end
 
 rule "Konstantno perutanje + Vitamin C"
-salience 55
+salience 40
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
 	rezultat: SkincareResult(jutarnjaRutina.aktivneSupstance contains "Vitamin C")
@@ -77,7 +77,7 @@ then
 end
 
 rule "Osetljivost - konstantno perutanje, uklanjanje dodataka"
-salience 54
+salience 39
 when
     zahtev: SkincareRequest(osetljivostKoze == OsetljivostKoze.KONSTANTNO_PERUTANJE)
     rezultat: SkincareResult()
@@ -91,7 +91,7 @@ then
 end
 
 rule "Osetljivost - sklona iritacijama, samo maska"
-salience 54
+salience 39
 when
     zahtev: SkincareRequest(osetljivostKoze == OsetljivostKoze.SKLONA_IRITACIJAMA)
     rezultat: SkincareResult()

@@ -4,25 +4,33 @@ import com.dermawise.backend.SkincareRequest
 import com.dermawise.backend.SkincareResult
 
 rule "Napomena - Akne i AntiAge zajedno"
-salience 60
+salience 49
 when
     rezultat: SkincareResult(kategorijaNege contains "Akne", kategorijaNege contains "AntiAge")
 then
-    rezultat.dodajNapomenu("Salicilna kiselina i retinol se ne preporučuju zajedno uveče. Trenutna večernja rutina koristi salicilnu kiselinu za rešavanje akni. Nakon što se stanje smiri, preporučuje se prelazak na proizvod sa retinolom za anti-age negu.");
+    rezultat.dodajNapomenu("Vaša večernja rutina sadrži i salicilnu kiselinu i retinol, koji se ne preporučuju da se koriste zajedno. Za sada primenjujte salicilnu kiselinu za rešavanje akni. Nakon što se stanje smiri, preporučuje se prelazak na proizvod sa retinolom za anti-age negu.");
 end
 
 rule "Napomena - Akne i Pigmentacija zajedno"
-salience 60
+salience 49
 when
     rezultat: SkincareResult(kategorijaNege contains "Akne", kategorijaNege contains "Pigmentacija")
 then
-    rezultat.dodajNapomenu("Salicilna kiselina i glikolna kiselina se ne preporučuju istovremeno uveče (oba su eksfolijanti). Trenutna večernja rutina koristi salicilnu kiselinu za rešavanje akni. Nakon što se stanje smiri, preporučuje se prelazak na proizvod sa glikolnom kiselinom za pigmentaciju.");
+    rezultat.dodajNapomenu("Vaša večernja rutina sadrži i salicilnu kiselinu i glikolnu kiselinu, koje se ne preporučuju da se koriste istovremeno (oba su eksfolijanti). Savetujemo da prvo počnete da koristite salicilnu kiselinu za rešavanje akni. Nakon što se stanje smiri, preporučuje se prelazak na proizvod sa glikolnom kiselinom za rešavanje problema pigmentacije.");
 end
 
 rule "Napomena - AntiAge i Pigmentacija zajedno"
-salience 60
+salience 49
 when
     rezultat: SkincareResult(kategorijaNege contains "AntiAge", kategorijaNege contains "Pigmentacija", kategorijaNege excludes "Akne")
 then
-    rezultat.dodajNapomenu("Retinol i glikolna kiselina se ne preporučuju zajedno uveče zbog povećanog rizika od iritacije. Trenutna večernja rutina koristi retinol za anti-age negu. Za dodatnu negu pigmentacije, glikolnu kiselinu mozete koristiti odvojenim večerima ili nakon konsultacije sa dermatologom.");
+    rezultat.dodajNapomenu("Vaša večernja rutina sadrži i retinol i glikolnu kiselinu, koje se ne preporučuju da se koriste zajedno zbog povećanog rizika od iritacije. Počnite sa korišćenjem retinola za anti-age negu. Za dodatnu negu pigmentacije, glikolnu kiselinu možete koristiti odvojenim večerima ili nakon konsultacije sa dermatologom.");
+end
+
+rule "Napomena - sve tri kategorije zajedno"
+salience 50
+when
+    rezultat: SkincareResult(kategorijaNege contains "AntiAge", kategorijaNege contains "Pigmentacija", kategorijaNege contains "Akne")
+then
+    rezultat.dodajNapomenu("Vaša večernja rutina kombinuje tri jaka aktivna sastojka (salicilnu i glikolnu kiselinu i retinol), što značajno može da utiče na iritaciju kože. Preporučuje se da ih NE koristite sva tri iste večeri, već da ih rasporedite naizmenično kroz nedelju.");
 end

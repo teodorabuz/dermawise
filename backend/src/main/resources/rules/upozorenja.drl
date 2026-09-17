@@ -5,7 +5,7 @@ import com.dermawise.backend.SkincareResult
 import com.dermawise.backend.OsetljivostKoze
 
 rule "Upozorenje - Retinol ucestalost"
-salience 55
+salience 45
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.NORMALNA_OTPORNOST)
     rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Retinol")
@@ -14,7 +14,7 @@ then
 end
 
 rule "Upozorenje - Salicilna kiselina ucestalost"
-salience 55
+salience 45
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.NORMALNA_OTPORNOST)
     rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Salicilna kiselina")
@@ -23,7 +23,7 @@ then
 end
 
 rule "Upozorenje - Glikolna kiselina ucestalost"
-salience 55
+salience 45
 when
 	SkincareRequest(osetljivostKoze == OsetljivostKoze.NORMALNA_OTPORNOST)
     rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Glikolna kiselina")

@@ -6,7 +6,7 @@ import com.dermawise.backend.Budzet
 import com.dermawise.backend.Sastojak
 
 rule "Godine - preventivni retinol, ekonomican budzet (vec koriscen retinol)"
-salience 66
+salience 70
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.RETINOL)
@@ -18,7 +18,7 @@ then
 end
 
 rule "Godine - preventivni retinol, ekonomican budzet (nije koriscen retinol)"
-salience 66
+salience 70
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.RETINOL)
@@ -30,7 +30,7 @@ then
 end
 
 rule "Godine - preventivni retinol, srednji budzet (vec koriscen retinol)"
-salience 66
+salience 70
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.RETINOL)
@@ -42,7 +42,7 @@ then
 end
 
 rule "Godine - preventivni retinol, srednji budzet (nije koriscen retinol)"
-salience 66
+salience 70
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.RETINOL)
@@ -54,7 +54,7 @@ then
 end
 
 rule "Godine - preventivni retinol, premium budzet (vec koriscen retinol)"
-salience 66
+salience 70
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.RETINOL)
@@ -66,7 +66,7 @@ then
 end
 
 rule "Godine - preventivni retinol, premium budzet (nije koriscen retinol)"
-salience 66
+salience 70
 no-loop true
 when
 	zahtev: SkincareRequest(godine > 25, budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.RETINOL)
@@ -78,7 +78,7 @@ then
 end
 
 rule "Godine - napomena kada su akne prioritet"
-salience 66
+salience 65
 when
 	SkincareRequest(godine > 25)
 	rezultat: SkincareResult(kategorijaNege contains "Akne")
@@ -87,7 +87,7 @@ then
 end
 
 rule "Godine - napomena kada je pigmentacija prioritet"
-salience 66
+salience 65
 when
 	SkincareRequest(godine > 25)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", kategorijaNege excludes "Akne")

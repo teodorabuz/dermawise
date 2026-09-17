@@ -5,7 +5,7 @@ import com.dermawise.backend.SkincareResult
 import com.dermawise.backend.GlavniProblem
 
 rule "Modifikator - Prosirene pore dodaju niacinamid"
-salience 65
+salience 75
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.PROSIRENE_PORE)
@@ -17,7 +17,7 @@ then
 end
 
 rule "Modifikator - Dehidratacija dodaje hijaluronsku kiselinu"
-salience 65
+salience 75
 no-loop true
 when
     SkincareRequest(glavniProblemi contains GlavniProblem.DEHIDRATACIJA)

@@ -6,7 +6,7 @@ import com.dermawise.backend.Budzet
 import com.dermawise.backend.TipKoze
 
 rule "Masna koža, ekonomičan budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -22,7 +22,7 @@ then
 end
 
 rule "Masna koža, srednji budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
@@ -38,7 +38,7 @@ then
 end 
 
 rule "Masna koža, premium budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)
@@ -54,7 +54,7 @@ then
 end 
 
 rule "Suva koža, ekonomičan budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -70,7 +70,7 @@ then
 end
 
 rule "Suva koža, srednji budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
@@ -86,7 +86,7 @@ then
 end 
 
 rule "Suva koža, premium budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)
@@ -102,7 +102,7 @@ then
 end 
 
 rule "Kombinovana koža, ekonomičan budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -118,7 +118,7 @@ then
 end
 
 rule "Kombinovana koža, srednji budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
@@ -134,7 +134,7 @@ then
 end 
 
 rule "Kombinovana koža, premium budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)
@@ -150,7 +150,7 @@ then
 end
 
 rule "Normalna koža, ekonomičan budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -166,7 +166,7 @@ then
 end
 
 rule "Normalna koža, srednji budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.SREDNJI)
@@ -182,7 +182,7 @@ then
 end 
 
 rule "Normalna koža, premium budžet - umivalica, toner i krema"
-salience 80
+salience 90
 no-loop true
 when
 	SkincareRequest(budzet == Budzet.PREMIUM)

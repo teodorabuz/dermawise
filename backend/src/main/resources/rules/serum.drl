@@ -6,7 +6,7 @@ import com.dermawise.backend.Budzet
 import com.dermawise.backend.Sastojak
 
 rule "Akne - ekonomičan budžet (jutarnja rutina, vec korisceni niacinamidi)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.NIACINAMID)
@@ -18,7 +18,7 @@ then
 end
 
 rule "Akne - ekonomičan budžet (jutarnja rutina, nisu korisceni niacinamidi)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.NIACINAMID)
@@ -30,31 +30,31 @@ then
 end
 
 rule "Akne - ekonomičan budžet (vecernja rutina, vec koriscena salicilna kiselina)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.SALICILNA_KISELINA)
     rezultat: SkincareResult(kategorijaNege contains "Akne", vecernjaRutina.aktivneSupstance excludes "Salicilna kiselina")
 then
-	rezultat.getVecernjaRutina().setSerum("Revox B77 Just Salicylic Acid 2%, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Revox B77 Just Salicylic Acid 2%, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Salicilna kiselina");
 	update(rezultat);
 end
 
 rule "Akne - ekonomičan budžet (vecernja rutina, nije koriscena salicilna kiselina)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.SALICILNA_KISELINA)
     rezultat: SkincareResult(kategorijaNege contains "Akne", vecernjaRutina.aktivneSupstance excludes "Salicilna kiselina")
 then
-	rezultat.getVecernjaRutina().setSerum("Balea Beauty Expert Clarifying Toner sa 0.8% - 1% BHA, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Expert Clarifying Toner sa 0.8% - 1% BHA, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Salicilna kiselina");
 	update(rezultat);
 end
 
 rule "Akne - srednji budžet (jutarnja rutina, vec korisceni niacinamidi)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.NIACINAMID)
@@ -66,7 +66,7 @@ then
 end
 
 rule "Akne - srednji budžet (jutarnja rutina, nisu korisceni niacinamidi)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.NIACINAMID)
@@ -78,31 +78,31 @@ then
 end
 
 rule "Akne - srednji budžet (vecernja rutina, vec koriscena salicilna kiselina)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.SALICILNA_KISELINA)
     rezultat: SkincareResult(kategorijaNege contains "Akne", vecernjaRutina.aktivneSupstance excludes "Salicilna kiselina")
 then
-	rezultat.getVecernjaRutina().setSerum("Geek & Gorgeous Porefectly Clear, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous Porefectly Clear, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Salicilna kiselina");
 	update(rezultat);
 end
 
 rule "Akne - srednji budžet (vecernja rutina, nije koriscena salicilna kiselina)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.SALICILNA_KISELINA)
     rezultat: SkincareResult(kategorijaNege contains "Akne", vecernjaRutina.aktivneSupstance excludes "Salicilna kiselina")
 then
-	rezultat.getVecernjaRutina().setSerum("Paula's Choice Clear 1% BHA Exfoliant, 100 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Paula's Choice Clear 1% BHA Exfoliant, 100 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Salicilna kiselina");
 	update(rezultat);
 end
 
 rule "Akne - premium budžet (jutarnja rutina, vec korisceni niacinamidi)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.NIACINAMID)
@@ -114,7 +114,7 @@ then
 end
 
 rule "Akne - premium budžet (jutarnja rutina, nisu korisceni niacinamidi)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.NIACINAMID)
@@ -126,31 +126,31 @@ then
 end
 
 rule "Akne - premium budžet (vecernja rutina, vec koriscena salicilna kiselina)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.SALICILNA_KISELINA)
     rezultat: SkincareResult(kategorijaNege contains "Akne", vecernjaRutina.aktivneSupstance excludes "Salicilna kiselina")
 then
-	rezultat.getVecernjaRutina().setSerum("Paula's Choice 2% BHA Liquid Exfoliant, 118 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 2% BHA Liquid Exfoliant, 118 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Salicilna kiselina");
 	update(rezultat);
 end
 
 rule "Akne - premium budžet (vecernja rutina, nije koriscena salicilna kiselina)"
-salience 75
+salience 79
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.SALICILNA_KISELINA)
     rezultat: SkincareResult(kategorijaNege contains "Akne", vecernjaRutina.aktivneSupstance excludes "Salicilna kiselina")
 then
-	rezultat.getVecernjaRutina().setSerum("Paula's Choice Calm 1% BHA Exfoliant, 118 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Paula's Choice Calm 1% BHA Exfoliant, 118 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Salicilna kiselina");
 	update(rezultat);
 end
 
 rule "Bore - ekonomičan budžet (jutarnja rutina, vec koriscen vitamin c)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.VITAMIN_C)
@@ -162,7 +162,7 @@ then
 end
 
 rule "Bore - ekonomičan budžet (jutarnja rutina, nije koriscen vitamin c)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.VITAMIN_C)
@@ -174,31 +174,31 @@ then
 end
 
 rule "Bore - ekonomičan budžet (vecernja rutina, vec koriscen retinol)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.RETINOL)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	rezultat.getVecernjaRutina().setSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Bore - ekonomičan budžet (vecernja rutina, nije koriscen retinol)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.RETINOL)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	rezultat.getVecernjaRutina().setSerum("Balea Beauty Collagen Retinol serum za lice, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Collagen Retinol serum za lice, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Bore - srednji budžet (jutarnja rutina, vec koriscen vitamin c)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.VITAMIN_C)
@@ -210,7 +210,7 @@ then
 end
 
 rule "Bore - srednji budžet (jutarnja rutina, nije koriscen vitamin c)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.VITAMIN_C)
@@ -222,31 +222,31 @@ then
 end
 
 rule "Bore - srednji budžet (vecernja rutina, vec koriscen retinol)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.RETINOL)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	rezultat.getVecernjaRutina().setSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Bore - srednji budžet (vecernja rutina, nije koriscen retinol)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.RETINOL)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	rezultat.getVecernjaRutina().setSerum("Geek & Gorgeous A-Game 0.05, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.05, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Bore - premium budžet (jutarnja rutina, vec koriscen vitamin c)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.VITAMIN_C)
@@ -258,7 +258,7 @@ then
 end
 
 rule "Bore - premium budžet (jutarnja rutina, nije koriscen vitamin c)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.VITAMIN_C)
@@ -270,31 +270,31 @@ then
 end
 
 rule "Bore - premium budžet (vecernja rutina, vec koriscen retinol)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.RETINOL)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	rezultat.getVecernjaRutina().setSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Bore - premium budžet (vecernja rutina, nije koriscen retinol)"
-salience 77
+salience 82
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.RETINOL)
     rezultat: SkincareResult(kategorijaNege contains "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	rezultat.getVecernjaRutina().setSerum("Paula's Choice 0.3% Retinol + 2% Bakuchiol Treatment, 30 ml");
+	rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 0.3% Retinol + 2% Bakuchiol Treatment, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Fleke - ekonomičan budžet (jutarnja rutina, vec koriscen vitamin c)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.VITAMIN_C)
@@ -306,7 +306,7 @@ then
 end
 
 rule "Fleke - ekonomičan budžet (jutarnja rutina, nije koriscen vitamin c)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.VITAMIN_C)
@@ -318,7 +318,7 @@ then
 end
 
 rule "Fleke - ekonomičan budžet (vecernja rutina, vec koriscena glikolna kiselina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.GLIKOLNA_KISELINA)
@@ -330,7 +330,7 @@ then
 end
 
 rule "Fleke - ekonomičan budžet (vecernja rutina, nije koriscena glikolna kiselina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.GLIKOLNA_KISELINA)
@@ -342,7 +342,7 @@ then
 end
 
 rule "Fleke - srednji budžet (jutarnja rutina, vec koriscen vitamin c)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.VITAMIN_C)
@@ -354,7 +354,7 @@ then
 end
 
 rule "Fleke - srednji budžet (jutarnja rutina, nije koriscen vitamin c)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.VITAMIN_C)
@@ -366,7 +366,7 @@ then
 end
 
 rule "Fleke - srednji budžet (vecernja rutina, vec koriscena glikolna kiselina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.GLIKOLNA_KISELINA)
@@ -378,7 +378,7 @@ then
 end
 
 rule "Fleke - srednji budžet (vecernja rutina, nije koriscena glikolna kiselina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.GLIKOLNA_KISELINA)
@@ -390,7 +390,7 @@ then
 end
 
 rule "Fleke - premium budžet (jutarnja rutina, vec koriscen vitamin c)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.VITAMIN_C)
@@ -402,7 +402,7 @@ then
 end
 
 rule "Fleke - premium budžet (jutarnja rutina, nije koriscen vitamin c)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.VITAMIN_C)
@@ -414,7 +414,7 @@ then
 end
 
 rule "Fleke - premium budžet (vecernja rutina, vec koriscena glikolna kiselina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.GLIKOLNA_KISELINA)
@@ -426,7 +426,7 @@ then
 end
 
 rule "Fleke - premium budžet (vecernja rutina, nije koriscena glikolna kiselina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.GLIKOLNA_KISELINA)
@@ -438,7 +438,7 @@ then
 end
 
 rule "Nijedan - ekonomičan budžet (jutarnja rutina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -449,7 +449,7 @@ then
 end
 
 rule "Nijedan - ekonomičan budžet (vecernja rutina, vec korisceni ceramidi)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.CERAMIDI)
@@ -461,7 +461,7 @@ then
 end
 
 rule "Nijedan - ekonomičan budžet (vecernja rutina, nisu korisceni ceramidi)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.CERAMIDI)
@@ -473,7 +473,7 @@ then
 end
 
 rule "Nijedan - srednji budžet (jutarnja rutina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
@@ -484,7 +484,7 @@ then
 end
 
 rule "Nijedan - srednji budžet (vecernja rutina, vec korisceni ceramidi)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.CERAMIDI)
@@ -496,7 +496,7 @@ then
 end
 
 rule "Nijedan - srednji budžet (vecernja rutina, nisu korisceni ceramidi)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.CERAMIDI)
@@ -508,7 +508,7 @@ then
 end
 
 rule "Nijedan - premium budžet (jutarnja rutina)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
@@ -519,7 +519,7 @@ then
 end
 
 rule "Nijedan - premium budžet (vecernja rutina, vec korisceni ceramidi)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.CERAMIDI)
@@ -531,7 +531,7 @@ then
 end
 
 rule "Nijedan - premium budžet (vecernja rutina, nisu korisceni ceramidi)"
-salience 80
+salience 85
 no-loop true
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.CERAMIDI)

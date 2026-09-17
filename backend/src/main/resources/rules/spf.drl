@@ -7,7 +7,7 @@ import com.dermawise.backend.IzlozenostSuncu
 import com.dermawise.backend.TipKoze
 
 rule "SPF - masna koza, ekonomican budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -16,7 +16,7 @@ then
 end
 
 rule "SPF - masna koza, ekonomican budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -25,7 +25,7 @@ then
 end
 
 rule "SPF - masna koza, ekonomican budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -34,7 +34,7 @@ then
 end
 
 rule "SPF - masna koza, srednji budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -43,7 +43,7 @@ then
 end
 
 rule "SPF - masna koza, srednji budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -52,7 +52,7 @@ then
 end
 
 rule "SPF - masna koza, srednji budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -61,7 +61,7 @@ then
 end
 
 rule "SPF - masna koza, premium budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -70,7 +70,7 @@ then
 end
 
 rule "SPF - masna koza, premium budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -79,7 +79,7 @@ then
 end
 
 rule "SPF - masna koza, premium budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
@@ -88,7 +88,7 @@ then
 end
 
 rule "SPF - suva koza, ekonomican budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -97,7 +97,7 @@ then
 end
 
 rule "SPF - suva koza, ekonomican budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -106,7 +106,7 @@ then
 end
 
 rule "SPF - suva koza, ekonomican budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -115,7 +115,7 @@ then
 end
 
 rule "SPF - suva koza, srednji budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -124,7 +124,7 @@ then
 end
 
 rule "SPF - suva koza, srednji budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -133,7 +133,7 @@ then
 end
 
 rule "SPF - suva koza, srednji budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -142,7 +142,7 @@ then
 end
 
 rule "SPF - suva koza, premium budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -151,7 +151,7 @@ then
 end
 
 rule "SPF - suva koza, premium budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -160,7 +160,7 @@ then
 end
 
 rule "SPF - suva koza, premium budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
@@ -169,7 +169,7 @@ then
 end
 
 rule "SPF - kombinovana koza, ekonomican budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -178,7 +178,7 @@ then
 end
 
 rule "SPF - kombinovana koza, ekonomican budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -187,7 +187,7 @@ then
 end
 
 rule "SPF - kombinovana koza, ekonomican budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -196,7 +196,7 @@ then
 end
 
 rule "SPF - kombinovana koza, srednji budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -205,7 +205,7 @@ then
 end
 
 rule "SPF - kombinovana koza, srednji budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -214,7 +214,7 @@ then
 end
 
 rule "SPF - kombinovana koza, srednji budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -223,7 +223,7 @@ then
 end
 
 rule "SPF - kombinovana koza, premium budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -232,7 +232,7 @@ then
 end
 
 rule "SPF - kombinovana koza, premium budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -241,7 +241,7 @@ then
 end
 
 rule "SPF - kombinovana koza, premium budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
@@ -250,7 +250,7 @@ then
 end
 
 rule "SPF - normalna koza, ekonomican budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -259,7 +259,7 @@ then
 end
 
 rule "SPF - normalna koza, ekonomican budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -268,7 +268,7 @@ then
 end
 
 rule "SPF - normalna koza, ekonomican budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -277,7 +277,7 @@ then
 end
 
 rule "SPF - normalna koza, srednji budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -286,7 +286,7 @@ then
 end
 
 rule "SPF - normalna koza, srednji budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -295,7 +295,7 @@ then
 end
 
 rule "SPF - normalna koza, srednji budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -304,7 +304,7 @@ then
 end
 
 rule "SPF - normalna koza, premium budzet, uglavnom u zatvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -313,7 +313,7 @@ then
 end
 
 rule "SPF - normalna koza, premium budzet, povremeno na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.POVREMENO_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
@@ -322,7 +322,7 @@ then
 end
 
 rule "SPF - normalna koza, premium budzet, dosta vremena na otvorenom"
-salience 70
+salience 88
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM, izlozenostSuncu == IzlozenostSuncu.DOSTA_VREMENA_NA_OTVORENOM)
 	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)

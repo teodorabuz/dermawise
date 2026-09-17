@@ -6,18 +6,19 @@ import com.dermawise.backend.Budzet
 import com.dermawise.backend.TipKoze
 
 rule "Maska i esencija - akne, ekonomican budzet"
-salience 70
+salience 54
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "Akne")
 then
 	rezultat.getDodaciRutini().setEsencija("Cosrx Advanced Snail 96 Mucin Power Essence");
 	rezultat.getDodaciRutini().setMaska("Balea HBN (Hydro Balance / Clear)");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esenciju kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - akne, ekonomican budzet"
-salience 69
+salience 53
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "Akne", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -27,18 +28,19 @@ then
 end
 
 rule "Maska i esencija - akne, srednji budzet"
-salience 70
+salience 54
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "Akne")
 then
 	rezultat.getDodaciRutini().setEsencija("COSRX Advanced Snail 96 Mucin Power Essence");
 	rezultat.getDodaciRutini().setMaska("CeraVe Blemish Control Clay Mask");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esenciju kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - akne, srednji budzet"
-salience 69
+salience 53
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "Akne", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -48,18 +50,19 @@ then
 end
 
 rule "Maska i esencija - akne, premium budzet"
-salience 70
+salience 54
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "Akne")
 then
 	rezultat.getDodaciRutini().setEsencija("Dr. Ceuracle Royal Vita Propolis Essence");
 	rezultat.getDodaciRutini().setMaska("Paula's Choice Clear Purifying Clay Mask");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - akne, premium budzet"
-salience 69
+salience 53
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "Akne", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -69,18 +72,19 @@ then
 end
 
 rule "Maska i esencija - pigmentacija, ekonomican budzet"
-salience 70
+salience 60
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
 then
 	rezultat.getDodaciRutini().setEsencija("Balea Aqua / BDIH tonizirajuće esencije");
 	rezultat.getDodaciRutini().setMaska("Garnier Vitamin C sheet maska");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - pigmentacija, ekonomican budzet"
-salience 69
+salience 59
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -90,18 +94,19 @@ then
 end
 
 rule "Maska i esencija - pigmentacija, srednji budzet"
-salience 70
+salience 60
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
 then
 	rezultat.getDodaciRutini().setEsencija("Garnier SkinActive Vitamin C Brightening Essence Water");
 	rezultat.getDodaciRutini().setMaska("L'Oréal Paris Revitalift Clinical Vitamin C Sheet Maska");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - pigmentacija, srednji budzet"
-salience 69
+salience 59
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -111,18 +116,19 @@ then
 end
 
 rule "Maska i esencija - pigmentacija, premium budzet"
-salience 70
+salience 60
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija")
 then
 	rezultat.getDodaciRutini().setEsencija("Laneige Radian-C Advanced Effector");
 	rezultat.getDodaciRutini().setMaska("Clinique Moisture Surge Overnight Mask");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - pigmentacija, premium budzet"
-salience 69
+salience 59
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -132,18 +138,19 @@ then
 end
 
 rule "Maska i esencija - anti-age, ekonomican budzet"
-salience 70
+salience 57
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "AntiAge")
 then
 	rezultat.getDodaciRutini().setEsencija("Balea Aqua hidratantna esencija");
 	rezultat.getDodaciRutini().setMaska("Balea Q10 Anti-Falten Sheet Maska");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - anti-age, ekonomican budzet"
-salience 69
+salience 56
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "AntiAge", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -153,18 +160,19 @@ then
 end
 
 rule "Maska i esencija - anti-age, srednji budzet"
-salience 70
+salience 57
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "AntiAge")
 then
 	rezultat.getDodaciRutini().setEsencija("L'Oréal Paris Revitalift Filler Tonik-Esencija sa hijaluronom");
 	rezultat.getDodaciRutini().setMaska("L'Oréal Paris Revitalift Filler [HA] Sheet Maska");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - anti-age, srednji budzet"
-salience 69
+salience 56
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "AntiAge", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -174,18 +182,19 @@ then
 end
 
 rule "Maska i esencija - anti-age, premium budzet"
-salience 70
+salience 57
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "AntiAge")
 then
 	rezultat.getDodaciRutini().setEsencija("Laneige Perfect Renew Youth Essence");
 	rezultat.getDodaciRutini().setMaska("Filorga Lift-Mask Ultra-Lifting Mask");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - anti-age, premium budzet"
-salience 69
+salience 56
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "AntiAge", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -195,18 +204,19 @@ then
 end
 
 rule "Maska i esencija - odrzavanje, ekonomican budzet"
-salience 70
+salience 52
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje")
 then
 	rezultat.getDodaciRutini().setEsencija("Balea Aqua hidratantna esencija");
 	rezultat.getDodaciRutini().setMaska("Garnier Moisture Bomb sheet maska sa hijaluronom");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - odrzavanje, ekonomican budzet"
-salience 69
+salience 51
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -216,18 +226,19 @@ then
 end
 
 rule "Maska i esencija - održavanje, srednji budzet"
-salience 70
+salience 52
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje")
 then
 	rezultat.getDodaciRutini().setEsencija("L'Oréal Paris Revitalift Filler Tonik-Esencija sa hijaluronom");
 	rezultat.getDodaciRutini().setMaska("L'Oréal Paris Revitalift Filler [HA] Sheet Maska");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - odrzavanje, srednji budzet"
-salience 69
+salience 51
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
@@ -237,18 +248,19 @@ then
 end
 
 rule "Maska i esencija - održavanje, premium budzet"
-salience 70
+salience 52
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje")
 then
 	rezultat.getDodaciRutini().setEsencija("Shiseido Treatment Softener");
 	rezultat.getDodaciRutini().setMaska("Clarins SOS Comfort Nourishing Balm Mask");
+	rezultat.getDodaciRutini().getUputstvo().clear();
 	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 rule "Ampule - odrzavanje, premium budzet"
-salience 69
+salience 51
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
