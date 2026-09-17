@@ -5,60 +5,80 @@ import com.dermawise.backend.SkincareResult
 import com.dermawise.backend.Budzet
 import com.dermawise.backend.Sastojak
 
-rule "Godine - preventivni retinol, ekonomican budzet"
+rule "Godine - preventivni retinol, ekonomican budzet (vec koriscen retinol)"
 salience 66
 no-loop true
 when
-	zahtev: SkincareRequest(godine > 25, budzet == Budzet.EKONOMICAN)
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.EKONOMICAN, korisceniSastojci contains Sastojak.RETINOL)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
-		rezultat.getVecernjaRutina().dodajSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
-	}
-	else{
-		rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Collagen Retinol serum za lice, 30 ml");
-	}
+	rezultat.getVecernjaRutina().dodajSerum("Revox B77 Serum za lice - RETINOL, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
-rule "Godine - preventivni retinol, srednji budzet"
+rule "Godine - preventivni retinol, ekonomican budzet (nije koriscen retinol)"
 salience 66
 no-loop true
 when
-	zahtev: SkincareRequest(godine > 25, budzet == Budzet.SREDNJI)
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.EKONOMICAN, korisceniSastojci excludes Sastojak.RETINOL)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
-		rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
-	}
-	else{
-		rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.05, 30 ml");
-	}
+	rezultat.getVecernjaRutina().dodajSerum("Balea Beauty Collagen Retinol serum za lice, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
-rule "Godine - preventivni retinol, premium budzet"
+rule "Godine - preventivni retinol, srednji budzet (vec koriscen retinol)"
 salience 66
 no-loop true
 when
-	zahtev: SkincareRequest(godine > 25, budzet == Budzet.PREMIUM)
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.SREDNJI, korisceniSastojci contains Sastojak.RETINOL)
 	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
 then
-	if(zahtev.getKorisceniSastojci().contains(Sastojak.RETINOL)){
-		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
-	}
-	else{
-		rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 0.3% Retinol + 2% Bakuchiol Treatment, 30 ml");
-	}
+	rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.1, 30 ml");
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
+	update(rezultat);
+end
+
+rule "Godine - preventivni retinol, srednji budzet (nije koriscen retinol)"
+salience 66
+no-loop true
+when
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.SREDNJI, korisceniSastojci excludes Sastojak.RETINOL)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
+then
+	rezultat.getVecernjaRutina().dodajSerum("Geek & Gorgeous A-Game 0.05, 30 ml");
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
+	update(rezultat);
+end
+
+rule "Godine - preventivni retinol, premium budzet (vec koriscen retinol)"
+salience 66
+no-loop true
+when
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.PREMIUM, korisceniSastojci contains Sastojak.RETINOL)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
+then
+	rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 1% Retinol Treatment, 30 ml");
+	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
+	update(rezultat);
+end
+
+rule "Godine - preventivni retinol, premium budzet (nije koriscen retinol)"
+salience 66
+no-loop true
+when
+	zahtev: SkincareRequest(godine > 25, budzet == Budzet.PREMIUM, korisceniSastojci excludes Sastojak.RETINOL)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", kategorijaNege excludes "Akne", kategorijaNege excludes "Pigmentacija", kategorijaNege excludes "AntiAge", vecernjaRutina.aktivneSupstance excludes "Retinol")
+then
+	rezultat.getVecernjaRutina().dodajSerum("Paula's Choice 0.3% Retinol + 2% Bakuchiol Treatment, 30 ml");
 	rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Retinol");
 	update(rezultat);
 end
 
 rule "Godine - napomena kada su akne prioritet"
 salience 66
-no-loop true
 when
 	SkincareRequest(godine > 25)
 	rezultat: SkincareResult(kategorijaNege contains "Akne")
@@ -68,7 +88,6 @@ end
 
 rule "Godine - napomena kada je pigmentacija prioritet"
 salience 66
-no-loop true
 when
 	SkincareRequest(godine > 25)
 	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", kategorijaNege excludes "Akne")

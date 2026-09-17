@@ -1,0 +1,72 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.GlavniProblem
+
+rule "Kategorija - Akne"
+salience 90
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.AKNE)
+    rezultat: SkincareResult(kategorijaNege excludes "Akne")
+then
+    rezultat.dodajKategorijuNege("Akne");
+    update(rezultat);
+end
+
+rule "Kategorija - Bore"
+salience 90
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.BORE)
+    rezultat: SkincareResult(kategorijaNege excludes "AntiAge")
+then
+    rezultat.dodajKategorijuNege("AntiAge");
+    update(rezultat);
+end
+
+rule "Kategorija - Fleke"
+salience 90
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.FLEKE)
+    rezultat: SkincareResult(kategorijaNege excludes "Pigmentacija")
+then
+    rezultat.dodajKategorijuNege("Pigmentacija");
+    update(rezultat);
+end
+
+
+rule "Kategorija - Nijedan"
+salience 90
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.NIJEDAN)
+    rezultat: SkincareResult(kategorijaNege excludes "Odrzavanje")
+then
+    rezultat.dodajKategorijuNege("Odrzavanje");
+    update(rezultat);
+end
+
+rule "Kategorija - Prosirene pore (fallback na Akne ako nema drugog problema)"
+salience 90
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.PROSIRENE_PORE, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE)
+    rezultat: SkincareResult(kategorijaNege excludes "Akne")
+then
+    rezultat.dodajKategorijuNege("Akne");
+    update(rezultat);
+end
+
+rule "Kategorija - Dehidratacija (fallback na Odrzavanje ako nema drugog problema)"
+salience 90
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.DEHIDRATACIJA, glavniProblemi excludes GlavniProblem.AKNE, glavniProblemi excludes GlavniProblem.BORE, glavniProblemi excludes GlavniProblem.FLEKE, glavniProblemi excludes GlavniProblem.PROSIRENE_PORE)
+    rezultat: SkincareResult(kategorijaNege excludes "Odrzavanje")
+then
+    rezultat.dodajKategorijuNege("Odrzavanje");
+    update(rezultat);
+end

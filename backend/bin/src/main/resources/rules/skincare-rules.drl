@@ -1,0 +1,50 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.OsecajNakonPranja
+import com.dermawise.backend.TipKoze
+
+rule "Tip koze - suva"
+salience 100
+no-loop true
+when
+    SkincareRequest(osecajNakonPranja == OsecajNakonPranja.ZATEGNUTO)
+    rezultat: SkincareResult()
+then
+    rezultat.setTipKoze(TipKoze.SUVA);
+    update(rezultat);
+end
+
+rule "Tip koze - kombinovana"
+salience 100
+no-loop true
+when
+    SkincareRequest(osecajNakonPranja == OsecajNakonPranja.SJAJNO_T_ZONA)
+    rezultat: SkincareResult()
+then
+    rezultat.setTipKoze(TipKoze.KOMBINOVANA);
+    update(rezultat);
+end
+
+rule "Tip koze - masna"
+salience 100
+no-loop true
+when
+    SkincareRequest(osecajNakonPranja == OsecajNakonPranja.SJAJNO_CELO)
+    rezultat: SkincareResult()
+then
+    rezultat.setTipKoze(TipKoze.MASNA);
+    update(rezultat);
+end
+
+rule "Tip koze - normalna"
+salience 100
+no-loop true
+when
+    SkincareRequest(osecajNakonPranja == OsecajNakonPranja.NORMALNO)
+    rezultat: SkincareResult()
+then
+    rezultat.setTipKoze(TipKoze.NORMALNA);
+    update(rezultat);
+end

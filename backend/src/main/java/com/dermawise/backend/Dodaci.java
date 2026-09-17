@@ -1,13 +1,16 @@
 package com.dermawise.backend;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Dodaci {
-	
+
 	private String maska;
 	private String esencija;
 	private String ampule;
-	private String uputstvo;
-	
-	
+	private List<String> uputstvo = new ArrayList<>();
+
+
 	public String getMaska() {
 		return maska;
 	}
@@ -26,13 +29,16 @@ public class Dodaci {
 	public void setAmpule(String ampule) {
 		this.ampule = ampule;
 	}
-	public String getUputstvo() {
+	public List<String> getUputstvo() {
 		return uputstvo;
 	}
-	public void setUputstvo(String uputstvo) {
+	public void setUputstvo(List<String> uputstvo) {
 		this.uputstvo = uputstvo;
 	}
-	
-	
+	public void dodajUputstvo(String uputstvo) {
+		if (!this.uputstvo.contains(uputstvo)) {
+			this.uputstvo.add(uputstvo);
+		}
+	}
 
 }

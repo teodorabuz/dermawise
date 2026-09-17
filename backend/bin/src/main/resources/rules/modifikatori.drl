@@ -1,0 +1,29 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.GlavniProblem
+
+rule "Modifikator - Prosirene pore dodaju niacinamid"
+salience 65
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.PROSIRENE_PORE)
+    rezultat: SkincareResult(jutarnjaRutina.aktivneSupstance excludes "Niacinamid")
+then
+    rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Niacinamid");
+    rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Niacinamid");
+    update(rezultat);
+end
+
+rule "Modifikator - Dehidratacija dodaje hijaluronsku kiselinu"
+salience 65
+no-loop true
+when
+    SkincareRequest(glavniProblemi contains GlavniProblem.DEHIDRATACIJA)
+    rezultat: SkincareResult(jutarnjaRutina.aktivneSupstance excludes "Hijaluronska kiselina")
+then
+    rezultat.getJutarnjaRutina().dodajAktivnuSupstancu("Hijaluronska kiselina");
+    rezultat.getVecernjaRutina().dodajAktivnuSupstancu("Hijaluronska kiselina");
+    update(rezultat);
+end

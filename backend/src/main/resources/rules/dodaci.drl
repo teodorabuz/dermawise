@@ -5,7 +5,7 @@ import com.dermawise.backend.SkincareResult
 import com.dermawise.backend.Budzet
 import com.dermawise.backend.TipKoze
 
-rule "Dodaci - akne, ekonomican budzet"
+rule "Maska i esencija - akne, ekonomican budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -13,13 +13,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Cosrx Advanced Snail 96 Mucin Power Essence");
 	rezultat.getDodaciRutini().setMaska("Balea HBN (Hydro Balance / Clear)");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Balea Ampule sa Vitaminom C ili Niacinamidom (set od 7 komada)");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esenciju kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - akne, srednji budzet"
+rule "Ampule - akne, ekonomican budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(kategorijaNege contains "Akne", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Balea Ampule sa Vitaminom C ili Niacinamidom (set od 7 komada)");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - akne, srednji budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
@@ -27,13 +34,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("COSRX Advanced Snail 96 Mucin Power Essence");
 	rezultat.getDodaciRutini().setMaska("CeraVe Blemish Control Clay Mask");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Isdinceutics Flavo-C Ultraglican / Ampule sa niacinamidom");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esenciju kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - akne, premium budzet"
+rule "Ampule - akne, srednji budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(kategorijaNege contains "Akne", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Isdinceutics Flavo-C Ultraglican / Ampule sa niacinamidom");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - akne, premium budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
@@ -41,13 +55,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Dr. Ceuracle Royal Vita Propolis Essence");
 	rezultat.getDodaciRutini().setMaska("Paula's Choice Clear Purifying Clay Mask");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Babor Doctor Babor Clarifying Ampoule Concentrates");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - pigmentacija, ekonomican budzet"
+rule "Ampule - akne, premium budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(kategorijaNege contains "Akne", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Babor Doctor Babor Clarifying Ampoule Concentrates");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - pigmentacija, ekonomican budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -55,13 +76,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Balea Aqua / BDIH tonizirajuće esencije");
 	rezultat.getDodaciRutini().setMaska("Garnier Vitamin C sheet maska");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Balea Ampule sa Vitaminom C (set od 7 komada)");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - pigmentacija, srednji budzet"
+rule "Ampule - pigmentacija, ekonomican budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Balea Ampule sa Vitaminom C (set od 7 komada)");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - pigmentacija, srednji budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
@@ -69,13 +97,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Garnier SkinActive Vitamin C Brightening Essence Water");
 	rezultat.getDodaciRutini().setMaska("L'Oréal Paris Revitalift Clinical Vitamin C Sheet Maska");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Vichy Liftactiv Specialist Peptide-C Ampule");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - pigmentacija, premium budzet"
+rule "Ampule - pigmentacija, srednji budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Vichy Liftactiv Specialist Peptide-C Ampule");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - pigmentacija, premium budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
@@ -83,13 +118,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Laneige Radian-C Advanced Effector");
 	rezultat.getDodaciRutini().setMaska("Clinique Moisture Surge Overnight Mask");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Isdinceutics Flavo-C Ultraglican");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - anti-age, ekonomican budzet"
+rule "Ampule - pigmentacija, premium budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(kategorijaNege contains "Pigmentacija", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Isdinceutics Flavo-C Ultraglican");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - anti-age, ekonomican budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -97,13 +139,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Balea Aqua hidratantna esencija");
 	rezultat.getDodaciRutini().setMaska("Balea Q10 Anti-Falten Sheet Maska");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Balea Beauty Expert Hyaluron Ampule (set od 7 komada)");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - anti-age, srednji budzet"
+rule "Ampule - anti-age, ekonomican budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(kategorijaNege contains "AntiAge", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Balea Beauty Expert Hyaluron Ampule (set od 7 komada)");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - anti-age, srednji budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
@@ -111,13 +160,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("L'Oréal Paris Revitalift Filler Tonik-Esencija sa hijaluronom");
 	rezultat.getDodaciRutini().setMaska("L'Oréal Paris Revitalift Filler [HA] Sheet Maska");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Vichy Liftactiv Specialist Peptide-C Ampule");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - anti-age, premium budzet"
+rule "Ampule - anti-age, srednji budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(kategorijaNege contains "AntiAge", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Vichy Liftactiv Specialist Peptide-C Ampule");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - anti-age, premium budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
@@ -125,13 +181,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Laneige Perfect Renew Youth Essence");
 	rezultat.getDodaciRutini().setMaska("Filorga Lift-Mask Ultra-Lifting Mask");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Babor Doctor Babor Lifting Cellular Collagen Booster Ampoule Concentrates");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - održavanje, ekonomican budzet"
+rule "Ampule - anti-age, premium budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(kategorijaNege contains "AntiAge", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Babor Doctor Babor Lifting Cellular Collagen Booster Ampoule Concentrates");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - odrzavanje, ekonomican budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
@@ -139,13 +202,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Balea Aqua hidratantna esencija");
 	rezultat.getDodaciRutini().setMaska("Garnier Moisture Bomb sheet maska sa hijaluronom");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Balea Beauty Expert Hydra Ampule");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - održavanje, srednji budzet"
+rule "Ampule - odrzavanje, ekonomican budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Balea Beauty Expert Hydra Ampule");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - održavanje, srednji budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
@@ -153,13 +223,20 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("L'Oréal Paris Revitalift Filler Tonik-Esencija sa hijaluronom");
 	rezultat.getDodaciRutini().setMaska("L'Oréal Paris Revitalift Filler [HA] Sheet Maska");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Vichy Mineral 89 Daily Booster Ampule (set ampula)");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
-rule "Dodaci - održavanje, premium budzet"
+rule "Ampule - odrzavanje, srednji budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Vichy Mineral 89 Daily Booster Ampule (set ampula)");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Maska i esencija - održavanje, premium budzet"
 salience 70
 when
 	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
@@ -167,10 +244,17 @@ when
 then
 	rezultat.getDodaciRutini().setEsencija("Shiseido Treatment Softener");
 	rezultat.getDodaciRutini().setMaska("Clarins SOS Comfort Nourishing Balm Mask");
-	if(rezultat.getTipKoze() != TipKoze.MASNA && rezultat.getTipKoze() != TipKoze.KOMBINOVANA){
-		rezultat.getDodaciRutini().setAmpule("Babor Centellar / Multi-Vitamin Ampule (set ampula)");
-	}
-	rezultat.getDodaciRutini().setUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+	rezultat.getDodaciRutini().dodajUputstvo("Masku je preporučljivo koristiti 2-3 puta nedeljno nakon što na kožu nanesete toner, kako bi koža što bolje upila serum iz maske. Esencije i ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
+end
+
+rule "Ampule - odrzavanje, premium budzet"
+salience 69
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(kategorijaNege contains "Odrzavanje", tipKoze != TipKoze.MASNA, tipKoze != TipKoze.KOMBINOVANA)
+then
+	rezultat.getDodaciRutini().setAmpule("Babor Centellar / Multi-Vitamin Ampule (set ampula)");
+	rezultat.getDodaciRutini().dodajUputstvo("Ampule kombinujte alternativnim danima, najčešće 2 puta nedeljno, po mogućstvu u jutarnjoj rutini, pre nego što nanesete dnevnu kremu i SPF.");
 end
 
 

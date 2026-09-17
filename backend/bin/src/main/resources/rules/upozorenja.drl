@@ -1,0 +1,32 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.OsetljivostKoze
+
+rule "Upozorenje - Retinol ucestalost"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.NORMALNA_OTPORNOST)
+    rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Retinol")
+then
+    rezultat.dodajUpozorenje("Ukoliko niste do sada koristili retinol, preporuka je koristiti ga 1-2 puta nedeljno na početku, uz postepeno povećanje učestalosti (na 2-3 puta nedeljno) kako koža razvija toleranciju.");
+end
+
+rule "Upozorenje - Salicilna kiselina ucestalost"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.NORMALNA_OTPORNOST)
+    rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Salicilna kiselina")
+then
+    rezultat.dodajUpozorenje("Ukoliko prvi put uvodite salicilnu kiselinu u svoju rutinu, preporuka je koristiti je 1-2 puta nedeljno kako bi se izbegla prekomerna eksfolijacija i iritacija kože. Nakon par nedelja učestalost korišćenja može da se poveća na 2-3 puta nedeljno.");
+end
+
+rule "Upozorenje - Glikolna kiselina ucestalost"
+salience 55
+when
+	SkincareRequest(osetljivostKoze == OsetljivostKoze.NORMALNA_OTPORNOST)
+    rezultat: SkincareResult(vecernjaRutina.aktivneSupstance contains "Glikolna kiselina")
+then
+    rezultat.dodajUpozorenje("Ukoliko niste do sada u svojoj rutini koristili glikolnu kiselinu, preporuka je koristiti je 1-2 puta nedeljno kako bi se izbegla prekomerna eksfolijacija i iritacija kože. Nakon par nedelja učestalost korišćenja može da se poveća na 2-3 puta nedeljno.");
+end

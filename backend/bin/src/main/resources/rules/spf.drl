@@ -1,0 +1,216 @@
+package com.dermawise.backend.rules
+
+import com.dermawise.backend.SkincareRequest
+import com.dermawise.backend.SkincareResult
+import com.dermawise.backend.Budzet
+import com.dermawise.backend.IzlozenostSuncu
+import com.dermawise.backend.TipKoze
+
+rule "SPF - masna koza, ekonomican budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Hidratantna dnevna krema za lice sa vitaminom E i aloe verom (SPF 15), 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Matirajući fluid za sunčanje za lice SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Balea Mattierende Sun Fluid za lice SPF 50, 50 ml");
+	}
+end
+
+rule "SPF - masna koza, srednji budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("CeraVe Facial Moisturizing Lotion SPF 25, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("La Roche-Posay Toleriane Rosaliac AR SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Eucerin Oil Control Sun Gel-Cream SPF 50+, 50 ml");
+	}
+end
+
+rule "SPF - masna koza, premium budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(tipKoze == TipKoze.MASNA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Clinique Superdefense Daily Defense Moisturizer SPF 20, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Paula's Choice Resist Youth-Extending Daily Hydrating Fluid SPF 30, 60 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("ISDIN Fusion Water Magic SPF 50, 50 ml");
+	}
+end
+
+rule "SPF - suva koza, ekonomican budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Bogata dnevna krema za lice sa ureom i 15% ulja (SPF 15), 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Rich Day Cream SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Balea Sensitive Kreme za sunčanje za lice SPF 50, 50 ml");
+	}
+end
+
+rule "SPF - suva koza, srednji budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("CeraVe Facial Moisturizing Lotion SPF 25, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("La Roche-Posay Toleriane Rosaliac AR SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Eucerin Sun Sensitive Protect Krema za sunčanje za lice SPF 50+, 50 ml");
+	}
+end
+
+rule "SPF - suva koza, premium budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(tipKoze == TipKoze.SUVA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Clinique Superdefense Daily Defense Moisturizer SPF 20, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Clinique Superdefense Daily Defense Moisturizer SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Avene Intense Protect Fluid SPF 50+, 150 ml");
+	}
+end
+
+rule "SPF - kombinovana koza, ekonomican budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Soft Balancing Krema SPF 15, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Soft Balancing Day Cream SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Balea Mattierende Sun Fluid za lice SPF 50, 50 ml");
+	}
+end
+
+rule "SPF - kombinovana koza, srednji budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("CeraVe Facial Moisturizing Lotion SPF 25, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Eucerin DermoPurifyer Zaštitni fluid SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Eucerin Sun Oil Control Gel-Krema za lice SPF 50+, 50 ml");
+	}
+end
+
+rule "SPF - kombinovana koza, premium budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(tipKoze == TipKoze.KOMBINOVANA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Clinique Superdefense Daily Defense Moisturizer SPF 20, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Clinique Superdefense Daily Defense Moisturizer SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("La Roche-Posay Anthelios Oil Correct SPF 50+, 50 ml");
+	}
+end
+
+rule "SPF - normalna koza, ekonomican budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.EKONOMICAN)
+	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Soft Balancing Krema SPF 15, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Balea Soft Balancing Day Cream SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Balea Sun Protect Fluid za lice SPF 50, 50 ml");
+	}
+end
+
+rule "SPF - normalna koza, srednji budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.SREDNJI)
+	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("CeraVe Facial Moisturizing Lotion SPF 25, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Eucerin Hyaluron-Filler Dnevna krema za suvu/normalnu kožu SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("Nivea Sun Face Fluid SPF 50, 50 ml");
+	}
+end
+
+rule "SPF - normalna koza, premium budzet"
+salience 70
+when
+	zahtev: SkincareRequest(budzet == Budzet.PREMIUM)
+	rezultat: SkincareResult(tipKoze == TipKoze.NORMALNA)
+then
+	if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.UGLAVNOM_U_ZATVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Clinique Superdefense Daily Defense Moisturizer SPF 20, 50 ml");
+	}
+	else if(zahtev.getIzlozenostSuncu() == IzlozenostSuncu.POVREMENO_NA_OTVORENOM){
+		rezultat.getJutarnjaRutina().setSpf("Clinique Superdefense Daily Defense Moisturizer SPF 30, 50 ml");
+	}
+	else{
+		rezultat.getJutarnjaRutina().setSpf("La Roche-Posay Anthelios UVMune 400 Hidratantna krema SPF 50+, 50 ml");
+	}
+end
+
+
+
+
+

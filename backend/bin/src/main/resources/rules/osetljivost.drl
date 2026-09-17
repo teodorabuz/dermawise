@@ -85,8 +85,7 @@ then
     rezultat.getDodaciRutini().setEsencija(null);
     rezultat.getDodaciRutini().setMaska(null);
     rezultat.getDodaciRutini().setAmpule(null);
-    rezultat.getDodaciRutini().getUputstvo().clear();
-    rezultat.getDodaciRutini().dodajUputstvo("Zbog trenutnog stanja kože (konstantno perutanje), dodatni koraci u nezi (esencija, maska, ampule) su privremeno izostavljeni. Fokusirajte se na osnovnu rutinu i hidrataciju dok se stanje kože ne stabilizuje.");
+    rezultat.getDodaciRutini().setUputstvo("Zbog trenutnog stanja kože (konstantno perutanje), dodatni koraci u nezi (esencija, maska, ampule) su privremeno izostavljeni. Fokusirajte se na osnovnu rutinu i hidrataciju dok se stanje kože ne stabilizuje.");
 	rezultat.dodajUpozorenje("Zbog konstantnog perutanja kože (znak oštećene kožne barijere), dodatni koraci u nezi (esencija, maska, ampule) su privremeno izostavljeni dok se stanje kože ne stabilizuje.");
 end
 
@@ -98,7 +97,6 @@ when
 then
     rezultat.getDodaciRutini().setEsencija(null);
     rezultat.getDodaciRutini().setAmpule(null);
-    rezultat.getDodaciRutini().getUputstvo().clear();
-    rezultat.getDodaciRutini().dodajUputstvo("Zbog trenutnog stanja kože (koža koja je sklona iritacijama i crvenilu), dodatni koraci u nezi (esencija i ampule) su privremeno izostavljeni. Fokusirajte se na osnovnu rutinu i hidrataciju dok se stanje kože ne stabilizuje, a u međuvremenu do 2-3 puta nedeljno stavljajte preporučenu masku za lice.");
+    rezultat.getDodaciRutini().setUputstvo("Zbog trenutnog stanja kože (koža koja je sklona iritacijama i crvenilu), dodatni koraci u nezi (esencija i ampule) su privremeno izostavljeni. Fokusirajte se na osnovnu rutinu i hidrataciju dok se stanje kože ne stabilizuje, a u međuvremenu do 2-3 puta nedeljno stavljajte preporučenu masku za lice.");
     rezultat.dodajUpozorenje("Zbog sklonosti ka iritacijama i crvenilu, preporučuje se koristiti samo masku iz preporučene rutine, dok se esencija i ampule privremeno izostavljaju kako bi se smanjio rizik od dodatne iritacije.");
 end
